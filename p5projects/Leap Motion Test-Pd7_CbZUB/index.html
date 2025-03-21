@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Local Leap file -->
+    <script src="leap.js"></script>
+    <!-- p5.js files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <main>
+    </main>
+    <!-- Add a small script to verify Leap is loaded -->
+    <script>
+      window.onload = function() {
+        if (typeof Leap === 'undefined') {
+          console.error('Leap not loaded from local file');
+        } else {
+          console.log('Leap successfully loaded');
+        }
+      }
+    </script>
+    <script src="sketch.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+let cat;
+let myCat;
+
+function preload() {
+  cat = loadImage("cat.jpg");
+}
+
+function setup() {
+  createCanvas(cat.width, cat.height);
+  myCat = createImage(width, height);
+
+  myCat.loadPixels();
+  cat.loadPixels();
+  pixelDensity(1);
+
+  for (let i = 0; i < cat.pixels.length; i++) {
+    myCat.pixels[i] = cat.pixels[i];
+  }
+
+  for (let y = height/2 - 5; y < height/2 + 5; y++) {
+    for (let x = 0; x < width; x++) {
+      let index = (x + y * width) * 4;
+        myCat.pixels[index] = 0;
+        myCat.pixels[index + 1] = 0;
+        myCat.pixels[index + 2] = 0;
+        myCat.pixels[index + 3] = 0;
+    }
+  }
+
+  myCat.updatePixels();
+
+  image(myCat, 0, 0);
+}

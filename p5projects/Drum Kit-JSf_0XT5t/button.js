@@ -1,0 +1,40 @@
+// Learning Processing
+// Daniel Shiffman
+// http://www.learningprocessing.com
+//https://editor.p5js.org/yining/sketches/ByLFGX5R
+
+// Exercise 9-8: Write a Button class (see Example 5-5 for a non-object-oriented button). The button 
+// class should register when a mouse is pressed over the button and change color.  Create button objects 
+// of different sizes and locations using an array. Before writing the main program, sketch out the 
+// Button class. Assume the button is off  when it first appears.  
+
+// Constructor initializes all variables
+class Button {
+  constructor(x, y, w, h, row, col, bhol) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.on = false;
+    this.row = row; // Tracks the instrument row
+    this.col = col; // Tracks the step in the sequence
+    this.bhol = bhol;
+  }
+
+  click(mx, my) {
+    if (mx > this.x && mx < this.x + this.w && my > this.y && my < this.y + this.h) {
+      this.on = !this.on;
+      if (this.on && selectedInstrument) {
+        let newSound = new Sound(selectedInstrument, this.bhol, this.row);
+        activeSounds.push(newSound);
+        newSound.play();
+      }
+    }
+  }
+
+  display() {
+    stroke(10);
+    fill(this.on ? color(0, 0, 140) : color(220, 220, 220));
+    rect(this.x, this.y, this.w, this.h);
+  }
+}

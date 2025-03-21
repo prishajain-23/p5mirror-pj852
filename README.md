@@ -20,10 +20,10 @@ bin/mirror.sh --user p5name
 # and then commit changes in github desktop
 
 # remove sketches not present online
-bin/mirror.sh --user p5name --clean
+bin/mirror.sh --user pj852 --clean
 
 # full update, download all projects
-bin/mirror.sh --user p5name --full
+bin/mirror.sh --user pj852 --full
 
 # run in verbose mode to show details of steps for debugging
 bin/mirror.sh --user p5name --verbose
@@ -34,11 +34,11 @@ bin/mirror.sh --user p5name --verbose
 
 ```
 # Edit this line for your editor.p5js user name
-bin/mirror.sh --user p5name
+bin/mirror.sh --user pj852
 
-bin/mirror.sh --user p5name --clean
-bin/mirror.sh --user p5name --full
-bin/mirror.sh --user p5name --verbose
+bin/mirror.sh --user pj852 --clean
+bin/mirror.sh --user pj852 --full
+bin/mirror.sh --user pj852 --verbose
 
 ```
 
