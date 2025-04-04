@@ -1,5 +1,5 @@
 # Sketches for pj852
-105 sketches  
+109 sketches  
 [\[CODING TRAIN\] Cabana\! - Worley Noise Port](https://editor.p5js.org/pj852/sketches/7NSz0o5XP)<!-- 2025-03-14T14:56:22.083Z -->  
 [2:2 Rothko's Cat copy](https://editor.p5js.org/pj852/sketches/mdRhrjoWK)<!-- 2024-11-04T21:28:28.861Z -->  
 [Accents copy](https://editor.p5js.org/pj852/sketches/N49SEwMnC)<!-- 2025-02-23T01:14:21.743Z -->  
@@ -15,6 +15,9 @@
 [Bjork Mutual Core - Mixer copy](https://editor.p5js.org/pj852/sketches/-1B3JO12x)<!-- 2025-02-02T21:04:35.934Z -->  
 [Bjork Mutual Core - Mixer with Waveform copy](https://editor.p5js.org/pj852/sketches/uJoEkBkk3)<!-- 2025-02-02T21:10:52.401Z -->  
 [Bubble Gum copy](https://editor.p5js.org/pj852/sketches/jFeYJbfpJ)<!-- 2025-03-19T17:17:28.692Z -->  
+[cathy starter](https://editor.p5js.org/pj852/sketches/mSHo9mFdl)<!-- 2025-04-04T02:48:05.746Z -->  
+[Code of Music - Interactive Timbre](https://editor.p5js.org/pj852/sketches/LiSa4674H)<!-- 2025-04-01T16:35:48.931Z -->  
+[Code of Music - Interactive Timbre copy](https://editor.p5js.org/pj852/sketches/m4hPglDGQ)<!-- 2025-04-02T17:45:57.019Z -->  
 [Code of Music 1.1 - in class](https://editor.p5js.org/pj852/sketches/W1LmWtUsj)<!-- 2025-01-21T19:10:40.813Z -->  
 [Code of Music 1.1 - sound progress](https://editor.p5js.org/pj852/sketches/f9V6PEF5F)<!-- 2025-01-21T19:19:13.606Z -->  
 [Code of Music 3.3](https://editor.p5js.org/pj852/sketches/-EcOM1-Qn)<!-- 2025-02-21T19:05:18.542Z -->  
@@ -48,7 +51,8 @@
 [ICM Week 8.1](https://editor.p5js.org/pj852/sketches/Wjv0qYBbq)<!-- 2024-10-30T18:23:17.636Z -->  
 [ICMW11 - in class Text Arrays](https://editor.p5js.org/pj852/sketches/_emW32qHd)<!-- 2024-11-21T19:20:59.713Z -->  
 [ImageModel\_TM copy](https://editor.p5js.org/pj852/sketches/5f-jEInHH)<!-- 2024-12-12T02:59:49.923Z -->  
-[IMS - Week 1 Assignment](https://editor.p5js.org/pj852/sketches/Wem0w9PdVK)<!-- 2025-03-21T13:47:51.258Z -->  
+[IMS - Week 1 Assignment](https://editor.p5js.org/pj852/sketches/Wem0w9PdVK)<!-- 2025-04-04T02:30:03.210Z -->  
+[IMS - Week 2 Assignment](https://editor.p5js.org/pj852/sketches/7AK7ytvG9)<!-- 2025-04-04T14:16:55.759Z -->  
 [Indian Drum Kit - Interactive Rhythm Composition](https://editor.p5js.org/pj852/sketches/gzm72DHGD)<!-- 2025-03-18T15:26:57.844Z -->  
 [indian drums - claude fix](https://editor.p5js.org/pj852/sketches/QVgxjBr-L)<!-- 2025-02-23T00:40:07.482Z -->  
 [Interactive Melody Composition](https://editor.p5js.org/pj852/sketches/9XXer8h3-)<!-- 2025-03-18T15:26:04.531Z -->  
@@ -92,7 +96,7 @@
 [teentaal visualization copy](https://editor.p5js.org/pj852/sketches/3aK7kNsSe)<!-- 2024-11-18T18:11:21.255Z -->  
 [Tempo / Speed copy](https://editor.p5js.org/pj852/sketches/ThWFOd1GKA)<!-- 2025-02-18T04:59:51.783Z -->  
 [Tempo / Speed copy](https://editor.p5js.org/pj852/sketches/QOFXNXS5I)<!-- 2025-02-18T04:59:51.516Z -->  
-[Tone.Oscillator - ADSR envelope & filters](https://editor.p5js.org/pj852/sketches/Dx-K95gU4)<!-- 2025-03-18T17:48:10.434Z -->  
+[Tone.Oscillator - ADSR envelope & filters](https://editor.p5js.org/pj852/sketches/Dx-K95gU4)<!-- 2025-03-31T20:30:04.460Z -->  
 [Tone.Oscillator - ASDR envelope](https://editor.p5js.org/pj852/sketches/DyErE2Ph4)<!-- 2025-03-18T17:35:03.399Z -->  
 [Tone.Oscillator - random partials](https://editor.p5js.org/pj852/sketches/LvLSde4yn)<!-- 2025-03-18T17:13:22.421Z -->  
 [Tone.Oscillator starter](https://editor.p5js.org/pj852/sketches/KHxmyMJPv)<!-- 2025-03-18T17:49:18.111Z -->  

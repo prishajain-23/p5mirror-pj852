@@ -1,5 +1,5 @@
 # pj852 p5projects
-[105 sketches 2025-03-21T13:47:51.258Z](./downloads/gen/sketches_recent.md)
+[109 sketches 2025-04-04T14:16:55.759Z](./downloads/gen/sketches_recent.md)
 
 - [22 Rothko's Cat copy-mdRhrjoWK](./p5projects/22%20Rothko's%20Cat%20copy-mdRhrjoWK) [[p5js](https://editor.p5js.org/pj852/sketches/mdRhrjoWK)]
 - [Accents copy-N49SEwMnC](./p5projects/Accents%20copy-N49SEwMnC) [[p5js](https://editor.p5js.org/pj852/sketches/N49SEwMnC)]
@@ -15,6 +15,8 @@
 - [Bjork Mutual Core - Mixer copy-1B3JO12x](./p5projects/Bjork%20Mutual%20Core%20-%20Mixer%20copy-1B3JO12x) [[p5js](https://editor.p5js.org/pj852/sketches/-1B3JO12x)]
 - [Bjork Mutual Core - Mixer with Waveform copy-uJoEkBkk3](./p5projects/Bjork%20Mutual%20Core%20-%20Mixer%20with%20Waveform%20copy-uJoEkBkk3) [[p5js](https://editor.p5js.org/pj852/sketches/uJoEkBkk3)]
 - [Bubble Gum copy-jFeYJbfpJ](./p5projects/Bubble%20Gum%20copy-jFeYJbfpJ) [[p5js](https://editor.p5js.org/pj852/sketches/jFeYJbfpJ)]
+- [Code of Music - Interactive Timbre copy-m4hPglDGQ](./p5projects/Code%20of%20Music%20-%20Interactive%20Timbre%20copy-m4hPglDGQ) [[p5js](https://editor.p5js.org/pj852/sketches/m4hPglDGQ)]
+- [Code of Music - Interactive Timbre-LiSa4674H](./p5projects/Code%20of%20Music%20-%20Interactive%20Timbre-LiSa4674H) [[p5js](https://editor.p5js.org/pj852/sketches/LiSa4674H)]
 - [Code of Music 1.1 - in class-W1LmWtUsj](./p5projects/Code%20of%20Music%201.1%20-%20in%20class-W1LmWtUsj) [[p5js](https://editor.p5js.org/pj852/sketches/W1LmWtUsj)]
 - [Code of Music 1.1 - sound progress-f9V6PEF5F](./p5projects/Code%20of%20Music%201.1%20-%20sound%20progress-f9V6PEF5F) [[p5js](https://editor.p5js.org/pj852/sketches/f9V6PEF5F)]
 - [Code of Music 3.3-EcOM1-Qn](./p5projects/Code%20of%20Music%203.3-EcOM1-Qn) [[p5js](https://editor.p5js.org/pj852/sketches/-EcOM1-Qn)]
@@ -43,6 +45,7 @@
 - [ICM Week 8.1-Wjv0qYBbq](./p5projects/ICM%20Week%208.1-Wjv0qYBbq) [[p5js](https://editor.p5js.org/pj852/sketches/Wjv0qYBbq)]
 - [ICMW11 - in class Text Arrays-\_emW32qHd](./p5projects/ICMW11%20-%20in%20class%20Text%20Arrays-_emW32qHd) [[p5js](https://editor.p5js.org/pj852/sketches/_emW32qHd)]
 - [IMS - Week 1 Assignment-Wem0w9PdVK](./p5projects/IMS%20-%20Week%201%20Assignment-Wem0w9PdVK) [[p5js](https://editor.p5js.org/pj852/sketches/em0w9PdVK)]
+- [IMS - Week 2 Assignment-7AK7ytvG9](./p5projects/IMS%20-%20Week%202%20Assignment-7AK7ytvG9) [[p5js](https://editor.p5js.org/pj852/sketches/7AK7ytvG9)]
 - [ImageModel\_TM copy-5f-jEInHH](./p5projects/ImageModel_TM%20copy-5f-jEInHH) [[p5js](https://editor.p5js.org/pj852/sketches/5f-jEInHH)]
 - [Indian Drum Kit - Interactive Rhythm Composition-gzm72DHGD](./p5projects/Indian%20Drum%20Kit%20-%20Interactive%20Rhythm%20Composition-gzm72DHGD) [[p5js](https://editor.p5js.org/pj852/sketches/gzm72DHGD)]
 - [Interactive Melody Composition-9XXer8h3-](./p5projects/Interactive%20Melody%20Composition-9XXer8h3-) [[p5js](https://editor.p5js.org/pj852/sketches/9XXer8h3-)]
@@ -76,6 +79,7 @@
 - [Tone.Sampler Example-H-T\_F4jMg](./p5projects/Tone.Sampler%20Example-H-T_F4jMg) [[p5js](https://editor.p5js.org/pj852/sketches/H-T_F4jMg)]
 - [Upbeat spinach-iQQbP2oU6](./p5projects/Upbeat%20spinach-iQQbP2oU6) [[p5js](https://editor.p5js.org/pj852/sketches/iQQbP2oU6)]
 - [\[CODING TRAIN\] Cabana\! - Worley Noise Port-7NSz0o5XP](./p5projects/%5BCODING%20TRAIN%5D%20Cabana!%20-%20Worley%20Noise%20Port-7NSz0o5XP) [[p5js](https://editor.p5js.org/pj852/sketches/7NSz0o5XP)]
+- [cathy starter-mSHo9mFdl](./p5projects/cathy%20starter-mSHo9mFdl) [[p5js](https://editor.p5js.org/pj852/sketches/mSHo9mFdl)]
 - [copied particle system minus lines-\_DEc6Cl0f](./p5projects/copied%20particle%20system%20minus%20lines-_DEc6Cl0f) [[p5js](https://editor.p5js.org/pj852/sketches/_DEc6Cl0f)]
 - [drum beat starter copy-cKln7ToVL](./p5projects/drum%20beat%20starter%20copy-cKln7ToVL) [[p5js](https://editor.p5js.org/pj852/sketches/cKln7ToVL)]
 - [drum beat starter-gAa9pEuZ](./p5projects/drum%20beat%20starter-gAa9pEuZ) [[p5js](https://editor.p5js.org/pj852/sketches/-gAa9pEuZ)]

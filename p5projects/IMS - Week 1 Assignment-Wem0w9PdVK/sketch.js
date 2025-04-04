@@ -31,12 +31,13 @@ function setup() {
   x = cols / 2;
   y = rows / 2;
   // background(51);
-  background(0);
+  // background(0);
   grid = make2DArray(cols, rows);
 }
 
 function draw() {
   // stroke(255, 100);
+  // background(0, 0, 0);
 
   // makes the size of the points being drawn responsive to the size of the grid
   // strokeWeight(spacing * 0.5);
@@ -113,6 +114,8 @@ function draw() {
       break;
   }
 }
+
+
 
 // use the shapes we defined in draw to custom draw on the canvas
 

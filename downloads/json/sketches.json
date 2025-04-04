@@ -1853,6 +1853,177 @@
     "id": "jFeYJbfpJ"
   },
   {
+    "_id": "mSHo9mFdl",
+    "name": "cathy starter",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67ef4273406209c717e79561",
+          "67ef4273406209c717e79560",
+          "67ef4273406209c717e79562"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67ef4273406209c717e79563",
+        "createdAt": "2025-04-04T02:48:05.746Z",
+        "updatedAt": "2025-04-04T02:48:05.746Z",
+        "id": "67ef4273406209c717e79563"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// setup function runs once, at the beginning\nfunction setup() {\n  // createCanvas(width, height);\n  // define width and height using pixels\n  createCanvas(400, 400);\n  \n  // set a background color (0-255) = (black-white)\n  // use background (r, g, b) for colors\n  background(0);\n}\n\n// draw function runs 70x/s\n// this is where you put the code that needs to run on a loop\nfunction draw() {\n  // draw the album cover frame\n  rectMode(CENTER);\n  noFill();     // remove fill from rectangle\n  stroke(255);  // set the stroke color to white\n  rect(width / 2, height / 2, 70);  // check help -> reference if you forget parameters\n\n  // draw the timeline base\n  line(0, height / 2, width, height / 2);\n  \n  // draw the year\n  fill(255);     // put the fill back for the text\n  noStroke();    // delete the stroke it's ugly lol\n  text(\"2016\", width/3, height/3);\n  \n  // draw vertical lines\n  \n  \n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67ef4273406209c717e79560",
+        "createdAt": "2025-04-04T02:48:05.746Z",
+        "updatedAt": "2025-04-04T02:48:05.746Z",
+        "id": "67ef4273406209c717e79560"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67ef4273406209c717e79561",
+        "createdAt": "2025-04-04T02:48:05.746Z",
+        "updatedAt": "2025-04-04T02:48:05.746Z",
+        "id": "67ef4273406209c717e79561"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67ef4273406209c717e79562",
+        "createdAt": "2025-04-04T02:48:05.746Z",
+        "updatedAt": "2025-04-04T02:48:05.746Z",
+        "id": "67ef4273406209c717e79562"
+      }
+    ],
+    "updatedAt": "2025-04-04T02:48:05.746Z",
+    "createdAt": "2025-04-04T02:22:45.025Z",
+    "id": "mSHo9mFdl"
+  },
+  {
+    "_id": "LiSa4674H",
+    "name": "Code of Music - Interactive Timbre",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67eafb65c99b8f73350ce88c",
+          "67eafb65c99b8f73350ce88d",
+          "67eafb65c99b8f73350ce88e"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67eafb65c99b8f73350ce88b",
+        "createdAt": "2025-04-01T16:35:48.931Z",
+        "updatedAt": "2025-04-01T16:35:48.931Z",
+        "id": "67eafb65c99b8f73350ce88b"
+      },
+      {
+        "name": "sketch.js",
+        "content": "let oscList = [];\nlet envList = [];\nlet numOsc = 5;\nlet freqSlider;\nlet time = 0;\nconst freqs = [220, 261.63, 329.63, 392.0, 523.25];\nconst colors = [\"#FFB3BA\", \"#FFDFBA\", \"#FFFFBA\", \"#BAFFC9\", \"#BAE1FF\"];\n\nfunction setup() {\n  createCanvas(400, 300);\n  noFill();\n\n  for (let i = 0; i < numOsc; i++) {\n    let osc = new Tone.Oscillator(freqs[i], \"sine\").start();\n    let env = new Tone.AmplitudeEnvelope({\n      attack: 0.01,\n      decay: 0.6,\n      sustain: 0.8,\n      release: 0.8,\n    });\n    osc.volume.value = -12;\n\n    let filter = new Tone.Filter(100, \"lowpass\");\n    osc.connect(env);\n    env.connect(filter);\n    filter.toDestination();\n\n    oscList.push(osc);\n    envList.push(env);\n  }\n\n  // Slider to control the number of frequencies being played\n  freqSlider = createSlider(0, numOsc, 0, 1);\n  freqSlider.position(10, 10);\n}\n\nfunction draw() {\n  background(0);\n  // background(245, 245, 220, 50); // Light beige background \n  // textSize(16);\n  // textAlign(CENTER);\n  fill(0, 50);\n  // text(\"Active Frequencies: \" + freqSlider.value(), width / 2, 30);\n\n  // Stop all audio first\n  stopAllAudio();\n\n  // Trigger envelopes and animate watercolor-like sine waves\n  for (let i = 0; i < freqSlider.value(); i++) {\n    envList[i].triggerAttackRelease(0.5);\n    \n    stroke(colors[i]);\n    strokeWeight(5);\n    for (let j = 0; j < 5; j++) { // Multiple overlapping strokes for watercolor effect\n      beginShape();\n      for (let x = 0; x < width; x += 5) {\n        let y = height / 2 + sin((x * 0.02 * (freqs[i] / 50)) + time + j * 0.3) * (40 + random(-5, 5));\n        vertex(x, y);\n      }\n      endShape();\n    }\n  }\n\n  time += 0.1; // Increment time for animation\n}\n\n// Stops all audio envelopes\nfunction stopAllAudio() {\n  for (let env of envList) {\n    env.triggerRelease();\n  }\n}",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67eafb65c99b8f73350ce88d",
+        "createdAt": "2025-04-01T16:35:48.931Z",
+        "updatedAt": "2025-04-01T16:35:48.931Z",
+        "id": "67eafb65c99b8f73350ce88d"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.js\"></script>\n    <script src=\"https://unpkg.com/p5-webserial@0.1.1/build/p5.webserial.js\"></script>\n    <script src=\"https://unpkg.com/tone@15.0.4/build/Tone.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67eafb65c99b8f73350ce88c",
+        "createdAt": "2025-04-01T16:35:48.931Z",
+        "updatedAt": "2025-04-01T16:35:48.931Z",
+        "id": "67eafb65c99b8f73350ce88c"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67eafb65c99b8f73350ce88e",
+        "createdAt": "2025-04-01T16:35:48.931Z",
+        "updatedAt": "2025-04-01T16:35:48.931Z",
+        "id": "67eafb65c99b8f73350ce88e"
+      }
+    ],
+    "createdAt": "2025-03-31T20:30:29.082Z",
+    "updatedAt": "2025-04-01T16:35:48.931Z",
+    "id": "LiSa4674H"
+  },
+  {
+    "_id": "m4hPglDGQ",
+    "name": "Code of Music - Interactive Timbre copy",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67ed773b7997d152c2aca753",
+          "67ed773b7997d152c2aca754",
+          "67ed773b7997d152c2aca755"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67ed773b7997d152c2aca752",
+        "createdAt": "2025-04-02T17:45:57.019Z",
+        "updatedAt": "2025-04-02T17:45:57.019Z",
+        "id": "67ed773b7997d152c2aca752"
+      },
+      {
+        "name": "sketch.js",
+        "content": "let oscList = [];\nlet envList = [];\nlet numOsc = 5;\nlet freqSlider;\nlet time = 0;\nconst freqs = [220, 261.63, 329.63, 392.0, 523.25];\nconst colors = [\"#FFB3BA\", \"#FFDFBA\", \"#FFFFBA\", \"#BAFFC9\", \"#BAE1FF\"];\n\nfunction setup() {\n  createCanvas(400, 300);\n  noFill();\n  \n  let osc = new Tone.Oscillator(1000, \"square\").start();\n  osc.toDestination();\n\n  // for (let i = 0; i < numOsc; i++) {\n  //   let osc = new Tone.Oscillator(freqs[i], \"sine\").start();\n  //   let env = new Tone.AmplitudeEnvelope({\n  //     attack: 0.01,\n  //     decay: 0.6,\n  //     sustain: 0.8,\n  //     release: 0.8,\n  //   });\n    osc.volume.value = -12;\n\n    // let filter = new Tone.Filter(100, \"lowpass\");\n    // osc.connect(env);\n    // env.connect(filter);\n    // filter.toDestination();\n\n//     oscList.push(osc);\n//     envList.push(env);\n  }\n\n//   // Slider to control the number of frequencies being played\n//   freqSlider = createSlider(0, numOsc, 0, 1);\n//   freqSlider.position(10, 10);\n// }\n\nfunction draw() {\n  background(0);\n  // background(245, 245, 220, 50); // Light beige background \n  // textSize(16);\n  // textAlign(CENTER);\n  fill(0, 50);\n  // text(\"Active Frequencies: \" + freqSlider.value(), width / 2, 30);\n\n  // Stop all audio first\n  stopAllAudio();\n\n  // Trigger envelopes and animate watercolor-like sine waves\n  for (let i = 0; i < freqSlider.value(); i++) {\n    envList[i].triggerAttackRelease(0.5);\n    \n    stroke(colors[i]);\n    strokeWeight(5);\n    for (let j = 0; j < 5; j++) { // Multiple overlapping strokes for watercolor effect\n      beginShape();\n      for (let x = 0; x < width; x += 5) {\n        let y = height / 2 + sin((x * 0.02 * (freqs[i] / 50)) + time + j * 0.3) * (40 + random(-5, 5));\n        vertex(x, y);\n      }\n      endShape();\n    }\n  }\n\n  time += 0.1; // Increment time for animation\n}\n\n// Stops all audio envelopes\nfunction stopAllAudio() {\n  for (let env of envList) {\n    env.triggerRelease();\n  }\n}",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67ed773b7997d152c2aca754",
+        "createdAt": "2025-04-02T17:45:57.019Z",
+        "updatedAt": "2025-04-02T17:45:57.019Z",
+        "id": "67ed773b7997d152c2aca754"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.js\"></script>\n    <script src=\"https://unpkg.com/p5-webserial@0.1.1/build/p5.webserial.js\"></script>\n    <script src=\"https://unpkg.com/tone@15.0.4/build/Tone.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67ed773b7997d152c2aca753",
+        "createdAt": "2025-04-02T17:45:57.019Z",
+        "updatedAt": "2025-04-02T17:45:57.019Z",
+        "id": "67ed773b7997d152c2aca753"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67ed773b7997d152c2aca755",
+        "createdAt": "2025-04-02T17:45:57.019Z",
+        "updatedAt": "2025-04-02T17:45:57.019Z",
+        "id": "67ed773b7997d152c2aca755"
+      }
+    ],
+    "createdAt": "2025-04-02T17:43:23.394Z",
+    "updatedAt": "2025-04-02T17:45:57.019Z",
+    "id": "m4hPglDGQ"
+  },
+  {
     "_id": "W1LmWtUsj",
     "name": "Code of Music 1.1 - in class",
     "files": [
@@ -6104,19 +6275,19 @@
         ],
         "fileType": "folder",
         "_id": "67db092d27076537e6460d1e",
-        "createdAt": "2025-03-21T13:47:51.258Z",
-        "updatedAt": "2025-03-21T13:47:51.258Z",
+        "createdAt": "2025-04-04T02:30:03.210Z",
+        "updatedAt": "2025-04-04T02:30:03.210Z",
         "id": "67db092d27076537e6460d1e"
       },
       {
         "name": "sketch.js",
-        "content": "// Prisha's Comments and Edits\n// Added colors and more randomness with types of shapes using switch case\n\n// Dan Shiffman's Code\n// Self Avoiding Walk (Random Walk with Alpha)\n// The Coding Train / Daniel Shiffman\n// https://editor.p5js.org/codingtrain/sketches/IEw2RkDnJ\n\nlet x;\nlet y;\n\nlet grid;\nlet spacing = 5;\nlet cols, rows;\n\n// this function makes an array of arrays to create a 2D grid\nfunction make2DArray(cols, rows) {\n  let arr = new Array(cols);\n  for (let i = 0; i < arr.length; i++) {\n    arr[i] = new Array(rows);\n  }\n  return arr;\n}\n\nfunction setup() {\n  createCanvas(400, 400);\n  // define columns based on desired spacing\n  // spacing is a good variable to play with to achieve different effects\n  cols = floor(width / spacing);\n  rows = floor(height / spacing);\n  x = cols / 2;\n  y = rows / 2;\n  // background(51);\n  background(0);\n  grid = make2DArray(cols, rows);\n}\n\nfunction draw() {\n  // stroke(255, 100);\n\n  // makes the size of the points being drawn responsive to the size of the grid\n  // strokeWeight(spacing * 0.5);\n  noFill();\n\n\n  const shape = floor(random(3));\n  switch (shape) {\n    case 0:\n      // strokeWeight(1);\n      rect(x * spacing, y * spacing, spacing);\n      break;\n    case 1:\n      strokeWeight(spacing);\n      point(x * spacing, y * spacing);\n      break;\n    case 2:\n      strokeWeight(1); \n      triangle(x * spacing, y * spacing, (x + (spacing * 0.5)) * spacing, y * spacing, (x + (spacing * 0.25)) * spacing,  (y + (spacing * 0.25)) * spacing);\n      break;\n  }\n\n  // something i tried that i didn't use\n  // rect(x * spacing, y * spacing, spacing * 0.5);\n\n  // SHIFFMAN CODE:\n  // this part is what makes it generative\n  // strokeWeight(spacing * 0.5);\n  // point(x * spacing, y * spacing);\n  // const r = floor(random(4));\n\n  // create cases for each random pattern chosen in the draw loop\n  // switch (r) {\n  //   case 0:\n  //     x = x + 1;\n  //     break;\n  //   case 1:\n  //     x = x - 1;\n  //     break;\n  //   case 2:\n  //     y = y + 1;\n  //     break;\n  //   case 3:\n  //     y = y - 1;\n  //     break;\n  // }\n\n  // adds in colors and maps them to the grid to create a rainbow gradient\n  let r = x * spacing;\n  let g = y * spacing;\n  // let b = random(100, 200);\n  let b = 200;\n  let a = 100;\n  stroke(r, g, b, a);\n  // fill(r, g, b, a);\n\n  const pattern = floor(random(4));\n  switch (pattern) {\n    case 0:\n      blendMode(HARD_LIGHT);\n      x = x + 2;\n      break;\n    case 1:\n      blendMode(ADD);\n      x = x - 2;\n      break;\n    case 2:\n      blendMode(EXCLUSION);\n      y = y + 2;\n      break;\n    case 3:\n      blendMode(SCREEN);\n      y = y - 2;\n      break;\n  }\n}\n\n// use the shapes we defined in draw to custom draw on the canvas\n\n// function mouseDragged() {\n//   const userShape = floor(random(3));\n//   switch (userShape) {\n//     case 0:\n//       rectMode(CENTER);\n//       rect(mouseX, mouseY, spacing * 0.5);\n//       break;\n//     case 1:\n//       strokeWeight(spacing);\n//       point(mouseX, mouseY);\n//       break;\n//     case 2:\n//       strokeWeight(1); \n//       triangle(mouseX, mouseY, (mouseX + (spacing * 0.5)), mouseY, (mouseX + (spacing * 0.25)),  (mouseY + (spacing * 0.25)));\n//       break;\n// }\n// }",
+        "content": "// Prisha's Comments and Edits\n// Added colors and more randomness with types of shapes using switch case\n\n// Dan Shiffman's Code\n// Self Avoiding Walk (Random Walk with Alpha)\n// The Coding Train / Daniel Shiffman\n// https://editor.p5js.org/codingtrain/sketches/IEw2RkDnJ\n\nlet x;\nlet y;\n\nlet grid;\nlet spacing = 5;\nlet cols, rows;\n\n// this function makes an array of arrays to create a 2D grid\nfunction make2DArray(cols, rows) {\n  let arr = new Array(cols);\n  for (let i = 0; i < arr.length; i++) {\n    arr[i] = new Array(rows);\n  }\n  return arr;\n}\n\nfunction setup() {\n  createCanvas(400, 400);\n  // define columns based on desired spacing\n  // spacing is a good variable to play with to achieve different effects\n  cols = floor(width / spacing);\n  rows = floor(height / spacing);\n  x = cols / 2;\n  y = rows / 2;\n  // background(51);\n  // background(0);\n  grid = make2DArray(cols, rows);\n}\n\nfunction draw() {\n  // stroke(255, 100);\n  // background(0, 0, 0);\n\n  // makes the size of the points being drawn responsive to the size of the grid\n  // strokeWeight(spacing * 0.5);\n  noFill();\n\n\n  const shape = floor(random(3));\n  switch (shape) {\n    case 0:\n      // strokeWeight(1);\n      rect(x * spacing, y * spacing, spacing);\n      break;\n    case 1:\n      strokeWeight(spacing);\n      point(x * spacing, y * spacing);\n      break;\n    case 2:\n      strokeWeight(1); \n      triangle(x * spacing, y * spacing, (x + (spacing * 0.5)) * spacing, y * spacing, (x + (spacing * 0.25)) * spacing,  (y + (spacing * 0.25)) * spacing);\n      break;\n  }\n\n  // something i tried that i didn't use\n  // rect(x * spacing, y * spacing, spacing * 0.5);\n\n  // SHIFFMAN CODE:\n  // this part is what makes it generative\n  // strokeWeight(spacing * 0.5);\n  // point(x * spacing, y * spacing);\n  // const r = floor(random(4));\n\n  // create cases for each random pattern chosen in the draw loop\n  // switch (r) {\n  //   case 0:\n  //     x = x + 1;\n  //     break;\n  //   case 1:\n  //     x = x - 1;\n  //     break;\n  //   case 2:\n  //     y = y + 1;\n  //     break;\n  //   case 3:\n  //     y = y - 1;\n  //     break;\n  // }\n\n  // adds in colors and maps them to the grid to create a rainbow gradient\n  let r = x * spacing;\n  let g = y * spacing;\n  // let b = random(100, 200);\n  let b = 200;\n  let a = 100;\n  stroke(r, g, b, a);\n  // fill(r, g, b, a);\n\n  const pattern = floor(random(4));\n  switch (pattern) {\n    case 0:\n      blendMode(HARD_LIGHT);\n      x = x + 2;\n      break;\n    case 1:\n      blendMode(ADD);\n      x = x - 2;\n      break;\n    case 2:\n      blendMode(EXCLUSION);\n      y = y + 2;\n      break;\n    case 3:\n      blendMode(SCREEN);\n      y = y - 2;\n      break;\n  }\n}\n\n\n\n// use the shapes we defined in draw to custom draw on the canvas\n\n// function mouseDragged() {\n//   const userShape = floor(random(3));\n//   switch (userShape) {\n//     case 0:\n//       rectMode(CENTER);\n//       rect(mouseX, mouseY, spacing * 0.5);\n//       break;\n//     case 1:\n//       strokeWeight(spacing);\n//       point(mouseX, mouseY);\n//       break;\n//     case 2:\n//       strokeWeight(1); \n//       triangle(mouseX, mouseY, (mouseX + (spacing * 0.5)), mouseY, (mouseX + (spacing * 0.25)),  (mouseY + (spacing * 0.25)));\n//       break;\n// }\n// }",
         "children": [],
         "fileType": "file",
         "isSelectedFile": true,
         "_id": "67db092d27076537e6460d20",
-        "createdAt": "2025-03-21T13:47:51.258Z",
-        "updatedAt": "2025-03-21T13:47:51.258Z",
+        "createdAt": "2025-04-04T02:30:03.210Z",
+        "updatedAt": "2025-04-04T02:30:03.210Z",
         "id": "67db092d27076537e6460d20"
       },
       {
@@ -6125,8 +6296,8 @@
         "children": [],
         "fileType": "file",
         "_id": "67db092d27076537e6460d1f",
-        "createdAt": "2025-03-21T13:47:51.258Z",
-        "updatedAt": "2025-03-21T13:47:51.258Z",
+        "createdAt": "2025-04-04T02:30:03.210Z",
+        "updatedAt": "2025-04-04T02:30:03.210Z",
         "id": "67db092d27076537e6460d1f"
       },
       {
@@ -6135,14 +6306,71 @@
         "children": [],
         "fileType": "file",
         "_id": "67db092d27076537e6460d21",
-        "createdAt": "2025-03-21T13:47:51.258Z",
-        "updatedAt": "2025-03-21T13:47:51.258Z",
+        "createdAt": "2025-04-04T02:30:03.210Z",
+        "updatedAt": "2025-04-04T02:30:03.210Z",
         "id": "67db092d27076537e6460d21"
       }
     ],
     "createdAt": "2025-03-19T18:13:02.054Z",
-    "updatedAt": "2025-03-21T13:47:51.258Z",
+    "updatedAt": "2025-04-04T02:30:03.210Z",
     "id": "Wem0w9PdVK"
+  },
+  {
+    "_id": "7AK7ytvG9",
+    "name": "IMS - Week 2 Assignment",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67ef190e731126767e7ecfaa",
+          "67ef190e731126767e7ecfab",
+          "67ef190e731126767e7ecfac"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67ef190e731126767e7ecfa9",
+        "createdAt": "2025-04-04T14:16:55.759Z",
+        "updatedAt": "2025-04-04T14:16:55.759Z",
+        "id": "67ef190e731126767e7ecfa9"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// Prisha's Comments and Edits\n// Added colors and more randomness with types of shapes using switch case\n\n// Dan Shiffman's Code\n// Self Avoiding Walk (Random Walk with Alpha)\n// The Coding Train / Daniel Shiffman\n// https://editor.p5js.org/codingtrain/sketches/IEw2RkDnJ\n\nlet x;\nlet y;\n\nlet grid;\nlet spacing = 5;\nlet cols, rows;\n\n// this function makes an array of arrays to create a 2D grid\nfunction make2DArray(cols, rows) {\n  let arr = new Array(cols);\n  for (let i = 0; i < arr.length; i++) {\n    arr[i] = new Array(rows);\n  }\n  return arr;\n}\n\nlet my = {};\n\nfunction setup() {\n  my.width = windowWidth;\n  my.height = windowHeight;\n  my.changeTime = 5.0;\n  my.debug = 1;\n\n  my.startTime = millis() / 1000.0;\n\n  if (!my.debug) {\n    my.width = windowWidth;\n    my.height = windowHeight;\n  }\n  createCanvas(my.width, my.height);\n  noStroke();\n\n  setup_fullScreenButton();\n\n  // define columns based on desired spacing\n  // spacing is a good variable to play with to achieve different effects\n  cols = floor(width / spacing);\n  rows = floor(height / spacing);\n  x = cols / 2;\n  y = rows / 2;\n  // background(51);\n  background(0);\n  grid = make2DArray(cols, rows);\n\n  colorMode(HSB, 360, 100, 100, 100); // Use HSB color mode for a rainbow effect\n}\n\nfunction draw() {\n  // stroke(255, 100);\n  // makes the size of the points being drawn responsive to the size of the grid\n  // strokeWeight(spacing * 0.5);\n\n  check_time();\n\n  noFill();\n//  // adds in colors and maps them to the grid to create a rainbow gradient\n//   let r = 0;\n//   let mappedR = map(r, 0, 255, 0, width);\n\n//   let g = 0;\n//   let mappedG = map(g, 0, 255, 0, height);\n//   let b = random(100, 200);\n//   // let b = 200;\n//   let a = 100;\n//   stroke(mappedR, mappedG, b, a);\n\n  // Map x and y to Hue and Brightness\n  let hueValue = map(x * spacing, 0, width, 0, 360); // Map x to hue (0-360)\n  let brightnessValue = map(y * spacing, 0, height, 50, 100); // Map y to brightness\n  let alphaValue = 80; // Set transparency\n\n  stroke(hueValue, 100, brightnessValue, alphaValue);\n  \n  const shape = floor(random(3));\n  switch (shape) {\n    case 0:\n      // strokeWeight(1);\n      rect(x * spacing, y * spacing, spacing);\n      break;\n    case 1:\n      strokeWeight(spacing);\n      point(x * spacing, y * spacing);\n      break;\n    case 2:\n      strokeWeight(1);\n      triangle(\n        x * spacing,\n        y * spacing,\n        (x + spacing * 0.5) * spacing,\n        y * spacing,\n        (x + spacing * 0.25) * spacing,\n        (y + spacing * 0.25) * spacing\n      );\n      break;\n  }\n\n  // something i tried that i didn't use\n  // rect(x * spacing, y * spacing, spacing * 0.5);\n\n  // SHIFFMAN CODE:\n  // this part is what makes it generative\n  // strokeWeight(spacing * 0.5);\n  // point(x * spacing, y * spacing);\n  // const r = floor(random(4));\n\n  // create cases for each random pattern chosen in the draw loop\n  // switch (r) {\n  //   case 0:\n  //     x = x + 1;\n  //     break;\n  //   case 1:\n  //     x = x - 1;\n  //     break;\n  //   case 2:\n  //     y = y + 1;\n  //     break;\n  //   case 3:\n  //     y = y - 1;\n  //     break;\n  // }\n\n  // fill(r, g, b, a);\n\n  const pattern = floor(random(4));\n  switch (pattern) {\n    case 0:\n      blendMode(HARD_LIGHT);\n      x = x + width / 400;\n      break;\n    case 1:\n      blendMode(ADD);\n      x = x - width / 400;\n      break;\n    case 2:\n      blendMode(EXCLUSION);\n      y = y + height / 400;\n      break;\n    case 3:\n      blendMode(SCREEN);\n      y = y - height / 400;\n      break;\n  }\n}\n\nfunction check_time() {\n  let now = millis() / 1000;\n  if (now - my.startTime > my.changeTime) {\n    my.startTime = now;\n  }\n}\n\n// From\n// https://editor.p5js.org/jht1493/sketches/5LgILr8RF\n\n// --\nfunction setup_fullScreenButton() {\n  my.fullScreenButton = createButton(\"?=v7 Full Screen\");\n  my.fullScreenButton.mousePressed(fullScreen_action);\n  my.fullScreenButton.style(\"font-size:42px\");\n  my.fullScreenButton.position(0, 0);\n  // my.fullScreenButton.size(50, 20);\n}\n\nfunction fullScreen_action() {\n  my.fullScreenButton.remove();\n  fullscreen(1);\n  let delay = 100;\n  setTimeout(() => {\n    ui_present_window();\n  }, delay);\n  // let r = x * spacing;\n  // let g = y * spacing;\n  // let b = random(100, 200);\n  // // let b = 200;\n  // let a = 100;\n  // stroke(r, g, b, a);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n  // init_dim();\n}\n\n// Respond to window resizing event\nfunction windowResized() {\n  // let r = x * spacing;\n  // let g = y * spacing;\n  // let b = random(100, 200);\n  // // let b = 200;\n  // let a = 100;\n  // stroke(r, g, b, a);\n  resizeCanvas(windowWidth, windowHeight);\n  background(0);\n  cols = floor(width / spacing);\n  rows = floor(height / spacing);\n  x = cols / 2;\n  y = rows / 2;\n  grid = make2DArray(cols, rows);\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67ef190e731126767e7ecfab",
+        "createdAt": "2025-04-04T14:16:55.759Z",
+        "updatedAt": "2025-04-04T14:16:55.759Z",
+        "id": "67ef190e731126767e7ecfab"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67ef190e731126767e7ecfaa",
+        "createdAt": "2025-04-04T14:16:55.759Z",
+        "updatedAt": "2025-04-04T14:16:55.759Z",
+        "id": "67ef190e731126767e7ecfaa"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67ef190e731126767e7ecfac",
+        "createdAt": "2025-04-04T14:16:55.759Z",
+        "updatedAt": "2025-04-04T14:16:55.759Z",
+        "id": "67ef190e731126767e7ecfac"
+      }
+    ],
+    "createdAt": "2025-04-03T23:26:06.903Z",
+    "updatedAt": "2025-04-04T14:16:55.759Z",
+    "id": "7AK7ytvG9"
   },
   {
     "_id": "gzm72DHGD",
@@ -11080,19 +11308,19 @@
         "fileType": "folder",
         "isSelectedFile": false,
         "_id": "67d9b0784a70663e3ad2c94e",
-        "createdAt": "2025-03-18T17:48:10.434Z",
-        "updatedAt": "2025-03-18T17:48:10.434Z",
+        "createdAt": "2025-03-31T20:30:04.460Z",
+        "updatedAt": "2025-03-31T20:30:04.460Z",
         "id": "67d9b0784a70663e3ad2c94e"
       },
       {
         "name": "sketch.js",
-        "content": "let osc1 = new Tone.Oscillator(261.63, \"sine\");\nosc1.volume.value = -12;\n\nlet ampEnv1 = new Tone.AmplitudeEnvelope({\n  \"attack\": 0.01,\n  \"decay\": 0.6,\n  \"sustain\": 0.8,\n  \"release\": 0.8\n}\n)\n\nlet aFilter = new Tone.Filter(150, \"lowpass\");\n\nosc1.connect(ampEnv1);\nampEnv1.connect(aFilter);\naFilter.toDestination();\n\nosc1.start();\n\nfunction keyPressed() {\n  ampEnv1.triggerAttack();\n}\n\nfunction keyReleased() {\n  ampEnv1.triggerRelease();\n}\n\nlet slider;\n\nfunction setup() {\n  slider = createSlider(-60, 0, -12);\n  slider.input(updateVolume);\n}\n\nfunction updateVolume() {\n  osc1.volume.rampTo(this.value());\n}\n\nfunction draw() {\n  background(220);\n}\n",
+        "content": "let osc1 = new Tone.Oscillator(261.63, \"sine\");\nosc1.volume.value = -12;\n\nlet ampEnv1 = new Tone.AmplitudeEnvelope({\n  \"attack\": 0.01,\n  \"decay\": 0.6,\n  \"sustain\": 0.8,\n  \"release\": 0.8\n}\n)\n\nlet aFilter = new Tone.Filter(100, \"lowpass\");\n\nosc1.connect(ampEnv1);\nampEnv1.connect(aFilter);\naFilter.toDestination();\n\nosc1.start();\n\nfunction keyPressed() {\n  ampEnv1.triggerAttack();\n}\n\nfunction keyReleased() {\n  ampEnv1.triggerRelease();\n}\n\nlet slider;\n\nfunction setup() {\n  slider = createSlider(-60, 0, -12);\n  slider.input(updateVolume);\n}\n\nfunction updateVolume() {\n  osc1.volume.rampTo(this.value());\n}\n\nfunction draw() {\n  background(220);\n}\n",
         "children": [],
         "fileType": "file",
         "isSelectedFile": true,
         "_id": "67d9b0784a70663e3ad2c950",
-        "createdAt": "2025-03-18T17:48:10.434Z",
-        "updatedAt": "2025-03-18T17:48:10.434Z",
+        "createdAt": "2025-03-31T20:30:04.460Z",
+        "updatedAt": "2025-03-31T20:30:04.460Z",
         "id": "67d9b0784a70663e3ad2c950"
       },
       {
@@ -11102,8 +11330,8 @@
         "fileType": "file",
         "isSelectedFile": false,
         "_id": "67d9b0784a70663e3ad2c94f",
-        "createdAt": "2025-03-18T17:48:10.434Z",
-        "updatedAt": "2025-03-18T17:48:10.434Z",
+        "createdAt": "2025-03-31T20:30:04.460Z",
+        "updatedAt": "2025-03-31T20:30:04.460Z",
         "id": "67d9b0784a70663e3ad2c94f"
       },
       {
@@ -11113,13 +11341,13 @@
         "fileType": "file",
         "isSelectedFile": false,
         "_id": "67d9b0784a70663e3ad2c951",
-        "createdAt": "2025-03-18T17:48:10.434Z",
-        "updatedAt": "2025-03-18T17:48:10.434Z",
+        "createdAt": "2025-03-31T20:30:04.460Z",
+        "updatedAt": "2025-03-31T20:30:04.460Z",
         "id": "67d9b0784a70663e3ad2c951"
       }
     ],
     "createdAt": "2025-03-18T17:42:16.871Z",
-    "updatedAt": "2025-03-18T17:48:10.434Z",
+    "updatedAt": "2025-03-31T20:30:04.460Z",
     "id": "Dx-K95gU4"
   },
   {

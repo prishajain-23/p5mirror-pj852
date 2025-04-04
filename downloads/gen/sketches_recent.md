@@ -1,10 +1,14 @@
 # Sketches for pj852
-105 sketches  
-[IMS - Week 1 Assignment](https://editor.p5js.org/pj852/sketches/Wem0w9PdVK)<!-- 2025-03-21T13:47:51.258Z -->  
+109 sketches  
+[IMS - Week 2 Assignment](https://editor.p5js.org/pj852/sketches/7AK7ytvG9)<!-- 2025-04-04T14:16:55.759Z -->  
+[cathy starter](https://editor.p5js.org/pj852/sketches/mSHo9mFdl)<!-- 2025-04-04T02:48:05.746Z -->  
+[IMS - Week 1 Assignment](https://editor.p5js.org/pj852/sketches/Wem0w9PdVK)<!-- 2025-04-04T02:30:03.210Z -->  
+[Code of Music - Interactive Timbre copy](https://editor.p5js.org/pj852/sketches/m4hPglDGQ)<!-- 2025-04-02T17:45:57.019Z -->  
+[Code of Music - Interactive Timbre](https://editor.p5js.org/pj852/sketches/LiSa4674H)<!-- 2025-04-01T16:35:48.931Z -->  
+[Tone.Oscillator - ADSR envelope & filters](https://editor.p5js.org/pj852/sketches/Dx-K95gU4)<!-- 2025-03-31T20:30:04.460Z -->  
 [Bubble Gum copy](https://editor.p5js.org/pj852/sketches/jFeYJbfpJ)<!-- 2025-03-19T17:17:28.692Z -->  
 [Tone.Oscillator starter](https://editor.p5js.org/pj852/sketches/KHxmyMJPv)<!-- 2025-03-18T17:49:18.111Z -->  
 [Tone.Player adjusting playback example](https://editor.p5js.org/pj852/sketches/72fF3KOT9)<!-- 2025-03-18T17:48:39.622Z -->  
-[Tone.Oscillator - ADSR envelope & filters](https://editor.p5js.org/pj852/sketches/Dx-K95gU4)<!-- 2025-03-18T17:48:10.434Z -->  
 [Tone.Oscillator - ASDR envelope](https://editor.p5js.org/pj852/sketches/DyErE2Ph4)<!-- 2025-03-18T17:35:03.399Z -->  
 [Tone.Oscillator - random partials](https://editor.p5js.org/pj852/sketches/LvLSde4yn)<!-- 2025-03-18T17:13:22.421Z -->  
 [Tone.Sampler Example](https://editor.p5js.org/pj852/sketches/H-T_F4jMg)<!-- 2025-03-18T16:36:54.055Z -->  

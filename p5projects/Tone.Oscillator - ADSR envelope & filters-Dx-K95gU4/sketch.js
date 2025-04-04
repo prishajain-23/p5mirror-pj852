@@ -9,7 +9,7 @@ let ampEnv1 = new Tone.AmplitudeEnvelope({
 }
 )
 
-let aFilter = new Tone.Filter(150, "lowpass");
+let aFilter = new Tone.Filter(100, "lowpass");
 
 osc1.connect(ampEnv1);
 ampEnv1.connect(aFilter);
