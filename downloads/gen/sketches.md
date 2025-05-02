@@ -1,6 +1,7 @@
 # Sketches for pj852
-109 sketches  
+118 sketches  
 [\[CODING TRAIN\] Cabana\! - Worley Noise Port](https://editor.p5js.org/pj852/sketches/7NSz0o5XP)<!-- 2025-03-14T14:56:22.083Z -->  
+[\[GirlTime\] TOF-Reverb](https://editor.p5js.org/pj852/sketches/r6D3ARq8P)<!-- 2025-04-11T21:25:20.032Z -->  
 [2:2 Rothko's Cat copy](https://editor.p5js.org/pj852/sketches/mdRhrjoWK)<!-- 2024-11-04T21:28:28.861Z -->  
 [Accents copy](https://editor.p5js.org/pj852/sketches/N49SEwMnC)<!-- 2025-02-23T01:14:21.743Z -->  
 [Accents copy](https://editor.p5js.org/pj852/sketches/Z1kWMLhyK)<!-- 2025-02-11T19:04:10.899Z -->  
@@ -53,6 +54,8 @@
 [ImageModel\_TM copy](https://editor.p5js.org/pj852/sketches/5f-jEInHH)<!-- 2024-12-12T02:59:49.923Z -->  
 [IMS - Week 1 Assignment](https://editor.p5js.org/pj852/sketches/Wem0w9PdVK)<!-- 2025-04-04T02:30:03.210Z -->  
 [IMS - Week 2 Assignment](https://editor.p5js.org/pj852/sketches/7AK7ytvG9)<!-- 2025-04-04T14:16:55.759Z -->  
+[IMS - Week 3 Assignment](https://editor.p5js.org/pj852/sketches/4pxXBtfPW)<!-- 2025-04-11T05:14:26.082Z -->  
+[ims-03](https://editor.p5js.org/pj852/sketches/GICHOb36j)<!-- 2025-04-11T15:26:23.281Z -->  
 [Indian Drum Kit - Interactive Rhythm Composition](https://editor.p5js.org/pj852/sketches/gzm72DHGD)<!-- 2025-03-18T15:26:57.844Z -->  
 [indian drums - claude fix](https://editor.p5js.org/pj852/sketches/QVgxjBr-L)<!-- 2025-02-23T00:40:07.482Z -->  
 [Interactive Melody Composition](https://editor.p5js.org/pj852/sketches/9XXer8h3-)<!-- 2025-03-18T15:26:04.531Z -->  
@@ -67,6 +70,8 @@
 [Loops starter midpoint 2 copy](https://editor.p5js.org/pj852/sketches/AWfgLgIJz)<!-- 2025-02-02T23:05:13.457Z -->  
 [Loops starter midpoint 3 copy](https://editor.p5js.org/pj852/sketches/cosAHo29q)<!-- 2025-02-02T23:06:23.670Z -->  
 [lowpass example](https://editor.p5js.org/pj852/sketches/9XXBR0S7Y)<!-- 2024-11-14T20:42:52.659Z -->  
+[Markov chain - drum kit](https://editor.p5js.org/pj852/sketches/AMG5QwZVl)<!-- 2025-04-22T16:36:53.482Z -->  
+[Markov chain starter](https://editor.p5js.org/pj852/sketches/9jBFc35Ga)<!-- 2025-04-22T16:39:28.293Z -->  
 [melody sequencer starter copy](https://editor.p5js.org/pj852/sketches/8hM76JI4J)<!-- 2025-03-10T20:22:26.215Z -->  
 [melody\_starter\_code copy](https://editor.p5js.org/pj852/sketches/vaOdIIQzu)<!-- 2025-03-04T18:02:15.600Z -->  
 [Meowing lobe](https://editor.p5js.org/pj852/sketches/MY2NFbCV1)<!-- 2025-02-18T19:04:43.384Z -->  
@@ -81,10 +86,12 @@
 [PCOMP W8L3](https://editor.p5js.org/pj852/sketches/0v11rEX5O)<!-- 2024-11-02T18:21:15.864Z -->  
 [pcomp week 8 lab 2](https://editor.p5js.org/pj852/sketches/Dz3mQ1AhQ)<!-- 2024-10-29T20:58:43.699Z -->  
 [Peach school](https://editor.p5js.org/pj852/sketches/eQRbKGuLq)<!-- 2025-02-03T01:09:24.477Z -->  
+[random melody loop within scale - n octaves copy copy](https://editor.p5js.org/pj852/sketches/WBtwiUpFv)<!-- 2025-04-08T16:56:30.643Z -->  
 [record + loop](https://editor.p5js.org/pj852/sketches/qVtPx0W_z)<!-- 2025-02-02T23:13:22.321Z -->  
 [reverb copy](https://editor.p5js.org/pj852/sketches/Apr4KYnKT)<!-- 2025-02-02T22:16:14.763Z -->  
 [romanticize your life](https://editor.p5js.org/pj852/sketches/jopfB4DJ6)<!-- 2025-02-03T03:29:12.436Z -->  
 [Sampler\_more\_samples copy](https://editor.p5js.org/pj852/sketches/OLsHO76Ci)<!-- 2025-03-18T16:36:18.188Z -->  
+[scale keyboard - frequencies - n octaves copy](https://editor.p5js.org/pj852/sketches/5RLhSlVcZ)<!-- 2025-04-10T21:21:02.601Z -->  
 [Slider styling copy](https://editor.p5js.org/pj852/sketches/tDxLexxwO)<!-- 2025-02-02T21:01:16.676Z -->  
 [Sound Starter](https://editor.p5js.org/pj852/sketches/BQL1g0V7X)<!-- 2025-01-21T18:54:08.077Z -->  
 [Spangled alpaca](https://editor.p5js.org/pj852/sketches/hPcZ0Eobv)<!-- 2024-10-31T22:39:33.368Z -->  
@@ -96,12 +103,13 @@
 [teentaal visualization copy](https://editor.p5js.org/pj852/sketches/3aK7kNsSe)<!-- 2024-11-18T18:11:21.255Z -->  
 [Tempo / Speed copy](https://editor.p5js.org/pj852/sketches/ThWFOd1GKA)<!-- 2025-02-18T04:59:51.783Z -->  
 [Tempo / Speed copy](https://editor.p5js.org/pj852/sketches/QOFXNXS5I)<!-- 2025-02-18T04:59:51.516Z -->  
-[Tone.Oscillator - ADSR envelope & filters](https://editor.p5js.org/pj852/sketches/Dx-K95gU4)<!-- 2025-03-31T20:30:04.460Z -->  
+[Tone.Oscillator - ADSR envelope & filters](https://editor.p5js.org/pj852/sketches/Dx-K95gU4)<!-- 2025-04-11T20:53:16.040Z -->  
 [Tone.Oscillator - ASDR envelope](https://editor.p5js.org/pj852/sketches/DyErE2Ph4)<!-- 2025-03-18T17:35:03.399Z -->  
-[Tone.Oscillator - random partials](https://editor.p5js.org/pj852/sketches/LvLSde4yn)<!-- 2025-03-18T17:13:22.421Z -->  
+[Tone.Oscillator - random partials](https://editor.p5js.org/pj852/sketches/LvLSde4yn)<!-- 2025-04-22T16:35:14.235Z -->  
 [Tone.Oscillator starter](https://editor.p5js.org/pj852/sketches/KHxmyMJPv)<!-- 2025-03-18T17:49:18.111Z -->  
 [Tone.Player adjusting playback example](https://editor.p5js.org/pj852/sketches/72fF3KOT9)<!-- 2025-03-18T17:48:39.622Z -->  
 [Tone.Sampler Example](https://editor.p5js.org/pj852/sketches/H-T_F4jMg)<!-- 2025-03-18T16:36:54.055Z -->  
+[tree with ml5](https://editor.p5js.org/pj852/sketches/ReytsMyfE)<!-- 2025-04-23T23:27:32.081Z -->  
 [Upbeat spinach](https://editor.p5js.org/pj852/sketches/iQQbP2oU6)<!-- 2024-11-21T18:52:19.095Z -->  
 [webSerial multiple ascii values Arduino to P5 copy](https://editor.p5js.org/pj852/sketches/ylGVDVo9O)<!-- 2024-11-05T22:13:27.477Z -->  
 [webSerial multiple ascii values P5 to Arduino copy](https://editor.p5js.org/pj852/sketches/rmDSdMMoJx)<!-- 2024-11-05T21:32:21.904Z -->  
@@ -109,3 +117,4 @@
 [webSerial one ascii value P5 to Arduino copy](https://editor.p5js.org/pj852/sketches/7gm8oxQcK)<!-- 2024-10-29T21:09:32.200Z -->  
 [webSerial one binary value Arduino to P5 copy](https://editor.p5js.org/pj852/sketches/VGmKfiMHR)<!-- 2024-10-29T21:20:12.431Z -->  
 [webSerial one binary value P5 to Arduino copy](https://editor.p5js.org/pj852/sketches/UHMQ6z-U3)<!-- 2024-10-29T20:57:30.252Z -->  
+[win or lose -prish notes](https://editor.p5js.org/pj852/sketches/wpk9J2sf2)<!-- 2025-04-30T22:02:36.697Z -->  

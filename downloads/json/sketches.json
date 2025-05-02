@@ -54,6 +54,63 @@
     "id": "7NSz0o5XP"
   },
   {
+    "_id": "r6D3ARq8P",
+    "name": "[GirlTime] TOF-Reverb",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67f97debc903d98da5603a20",
+          "67f97debc903d98da5603a1f",
+          "67f97debc903d98da5603a21"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67f97debc903d98da5603a22",
+        "createdAt": "2025-04-11T21:25:20.032Z",
+        "updatedAt": "2025-04-11T21:25:20.032Z",
+        "id": "67f97debc903d98da5603a22"
+      },
+      {
+        "name": "reverb.js",
+        "content": "let serial = new p5.WebSerial();\nlet portButton;\nlet inData = []; // stores serial values\n\nlet osc = new Tone.Oscillator(400, \"sine\").toDestination();\nlet reverb = new Tone.Reverb({\n  decay: 2,\n  preDelay: 0.01,\n}).toDestination();\nosc.connect(reverb);\n\n// ATTEMPTED FREQUENCY ENVELOPE\n// let freqEnv = new Tone.FrequencyEnvelope({\n//  \t\"attack\" : 0.2,\n//  \t\"baseFrequency\" : \"C2\",\n//  \t\"octaves\" : 4\n//  });\n//  freqEnv.connect(osc.frequency);\n\nfunction setup() {\n  createCanvas(100, 100);\n  allSerialStuff();\n}\n\nfunction draw() {\n  // let mappedDecay = map(inData[6], 600, 0, 3.0, 0.5);\n  // reverb.decay = mappedDecay;\n}\n\nfunction keyPressed() {\n  osc.start();\n  console.log(\"osc started\");\n\n  // if ((key = \"s\")) {\n  //   osc.stop();\n  //   console.log(\"osc stopped\");\n  // }\n}\n\nfunction serialEvent() {\n  // called when data is received\n  let stringFromSerial = serial.readLine(); // read until newline character\n  if (stringFromSerial) {\n    // console.log(stringFromSerial);\n    let trimmedString = trim(stringFromSerial); // remove whitespace\n    let myArray = split(trimmedString, \",\"); // split string into array\n\n    // if exactly 7 values received\n    if (myArray.length === 7) {\n      inData = myArray.map(Number); // convert all to numbers and store in inData\n\n      // // CONTROL REVERB WITH TOF SENSOR\n      // let mappedDecay = map(inData[6], 0, 600, 0.001, 3.0);\n      // reverb.decay = mappedDecay;\n      // console.log(inData[6])\n      // console.log(reverb.decay);\n    } else {\n      print(\"Warning: Expected 7 values, received \" + myArray.length);\n    }\n  }\n}\n\nfunction allSerialStuff() {\n  if (!navigator.serial) {\n    alert(\"WebSerial is not supported in this browser. Try Chrome or MS Edge.\");\n  }\n  // check for any ports that are available:\n  serial.getPorts();\n  // if there's no port chosen, choose one:\n  serial.on(\"noport\", makePortButton);\n  // open whatever port is available:\n  serial.on(\"portavailable\", openPort);\n  // handle serial errors:\n  serial.on(\"requesterror\", portError);\n  // handle any incoming serial data:\n  serial.on(\"data\", serialEvent);\n  serial.on(\"close\", makePortButton);\n  // add serial connect/disconnect listeners:\n  navigator.serial.addEventListener(\"connect\", portConnect);\n  navigator.serial.addEventListener(\"disconnect\", portDisconnect);\n}\n// if there's no port selected,\n// make a port select button appear:\nfunction makePortButton() {\n  // create and position a port chooser button:\n  portButton = createButton(\"choose port\");\n  portButton.position(10, 10);\n  // give the port button a mousepressed handler:\n  portButton.mousePressed(choosePort);\n}\n\n// make the port selector window appear:\nfunction choosePort() {\n  if (portButton) portButton.show();\n  serial.requestPort();\n}\n\n// open the selected port, and make the port\n// button invisible:\n// open the selected port, and make the port\n// button invisible:\nfunction openPort() {\n  // wait for the serial.open promise to return,\n  // then call the initiateSerial function\n  serial.open().then(initiateSerial);\n\n  // once the port opens, let the user know:\n  function initiateSerial() {\n    console.log(\"port open\");\n  }\n  // hide the port button once a port is chosen:\n  if (portButton) portButton.hide();\n}\n\n// pop up an alert if there's a port error:\nfunction portError(err) {\n  alert(\"Serial port error: \" + err);\n}\n// read any incoming data as a string\n// (assumes a newline at the end of it):\n\n// try to connect if a new serial port\n// gets added (i.e. plugged in via USB):\nfunction portConnect() {\n  console.log(\"port connected\");\n  serial.getPorts();\n}\n\n// if a port is disconnected:\nfunction portDisconnect() {\n  serial.close();\n  console.log(\"port disconnected\");\n}\n\nfunction closePort() {\n  serial.close();\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67f97debc903d98da5603a1f",
+        "createdAt": "2025-04-11T21:25:20.032Z",
+        "updatedAt": "2025-04-11T21:25:20.032Z",
+        "id": "67f97debc903d98da5603a1f"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.9/Tone.js\"></script>\n    <script src=\"https://unpkg.com/p5-webserial@0.1.1/build/p5.webserial.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <main></main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f97debc903d98da5603a20",
+        "createdAt": "2025-04-11T21:25:20.032Z",
+        "updatedAt": "2025-04-11T21:25:20.032Z",
+        "id": "67f97debc903d98da5603a20"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f97debc903d98da5603a21",
+        "createdAt": "2025-04-11T21:25:20.032Z",
+        "updatedAt": "2025-04-11T21:25:20.032Z",
+        "id": "67f97debc903d98da5603a21"
+      }
+    ],
+    "updatedAt": "2025-04-11T21:25:20.032Z",
+    "createdAt": "2025-04-11T20:40:09.984Z",
+    "id": "r6D3ARq8P"
+  },
+  {
     "_id": "mdRhrjoWK",
     "name": "2:2 Rothko's Cat copy",
     "files": [
@@ -6373,6 +6430,120 @@
     "id": "7AK7ytvG9"
   },
   {
+    "_id": "4pxXBtfPW",
+    "name": "IMS - Week 3 Assignment",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67f8981b5156627dc6f801bf",
+          "67f8981b5156627dc6f801c0",
+          "67f8981b5156627dc6f801c1"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67f8981b5156627dc6f801be",
+        "createdAt": "2025-04-11T05:14:26.082Z",
+        "updatedAt": "2025-04-11T05:14:26.082Z",
+        "id": "67f8981b5156627dc6f801be"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// Prisha's Comments and Edits\n// Added colors and more randomness with types of shapes using switch case\n//\n// Dan Shiffman's Code\n// Self Avoiding Walk (Random Walk with Alpha)\n// The Coding Train / Daniel Shiffman\n// https://editor.p5js.org/codingtrain/sketches/IEw2RkDnJ\n\n// Default values for spacing and step\nlet spacing = 5;\nlet step = 2;\n\n// Parse URL parameters using URLSearchParams (supported in most modern browsers)\n// written with GPT 3o-mini-high\nconst urlParams = new URLSearchParams(window.location.search);\nif (urlParams.has('spacing')) {\n  const s = Number(urlParams.get('spacing'));\n  if (!isNaN(s) && s > 0) {\n    spacing = s;\n  }\n}\nif (urlParams.has('step')) {\n  const st = Number(urlParams.get('step'));\n  if (!isNaN(st) && st > 0) {\n    step = st;\n  }\n}\n\nlet x;\nlet y;\nlet grid;\nlet cols, rows;\n\n// The \"my\" object holds settings and state variables.\nlet my = {};\n\n// This function makes an array of arrays to create a 2D grid.\nfunction make2DArray(cols, rows) {\n  let arr = new Array(cols);\n  for (let i = 0; i < arr.length; i++) {\n    arr[i] = new Array(rows);\n  }\n  return arr;\n}\n\nfunction setup() {\n  // Set width, height, and other settings.\n  my.width = windowWidth;\n  my.height = windowHeight;\n  my.changeTime = 5.0;\n  my.debug = 1;\n  my.startTime = millis() / 1000.0;\n  \n  createCanvas(my.width, my.height);\n  noStroke();\n  \n  setup_fullScreenButton();\n  \n  // Calculate the number of columns and rows based on spacing.\n  cols = floor(width / spacing);\n  rows = floor(height / spacing);\n  x = cols / 2;\n  y = rows / 2;\n  \n  background(0);\n  grid = make2DArray(cols, rows);\n  \n  // Use HSB for a rainbow effect.\n  colorMode(HSB, 360, 100, 100, 100);\n}\n\nfunction draw() {\n  check_time();\n  noFill();\n  \n  // Map x and y to Hue and Brightness.\n  let hueValue = map(x * spacing, 0, width, 0, 360);\n  let brightnessValue = map(y * spacing, 0, height, 50, 100);\n  let alphaValue = 80;\n  stroke(hueValue, 100, brightnessValue, alphaValue);\n  \n  // Randomly choose a shape.\n  const shape = floor(random(3));\n  switch (shape) {\n    case 0:\n      rect(x * spacing, y * spacing, spacing);\n      break;\n    case 1:\n      strokeWeight(spacing);\n      point(x * spacing, y * spacing);\n      break;\n    case 2:\n      strokeWeight(1);\n      triangle(\n        x * spacing,\n        y * spacing,\n        (x + spacing * 0.5) * spacing,\n        y * spacing,\n        (x + spacing * 0.25) * spacing,\n        (y + spacing * 0.25) * spacing\n      );\n      break;\n  }\n  \n  // Apply a random movement pattern.\n  const pattern = floor(random(4));\n  switch (pattern) {\n    case 0:\n      blendMode(HARD_LIGHT);\n      x = x + step;\n      break;\n    case 1:\n      blendMode(ADD);\n      x = x - step;\n      break;\n    case 2:\n      blendMode(EXCLUSION);\n      y = y + step;\n      break;\n    case 3:\n      blendMode(SCREEN);\n      y = y - step;\n      break;\n  }\n}\n\nfunction check_time() {\n  let now = millis() / 1000;\n  if (now - my.startTime > my.changeTime) {\n    my.startTime = now;\n  }\n}\n\n// Create a full screen button.\nfunction setup_fullScreenButton() {\n  my.fullScreenButton = createButton(\"?=v7 Full Screen\");\n  my.fullScreenButton.mousePressed(fullScreen_action);\n  my.fullScreenButton.style(\"font-size:42px\");\n  my.fullScreenButton.position(0, 0);\n}\n\nfunction fullScreen_action() {\n  my.fullScreenButton.remove();\n  fullscreen(1);\n  let delay = 100;\n  setTimeout(() => {\n    ui_present_window();\n  }, delay);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n\n// Recalculate layout if the window is resized.\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n  background(0);\n  cols = floor(width / spacing);\n  rows = floor(height / spacing);\n  x = cols / 2;\n  y = rows / 2;\n  grid = make2DArray(cols, rows);\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67f8981b5156627dc6f801c0",
+        "createdAt": "2025-04-11T05:14:26.082Z",
+        "updatedAt": "2025-04-11T05:14:26.082Z",
+        "id": "67f8981b5156627dc6f801c0"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.min.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f8981b5156627dc6f801bf",
+        "createdAt": "2025-04-11T05:14:26.082Z",
+        "updatedAt": "2025-04-11T05:14:26.082Z",
+        "id": "67f8981b5156627dc6f801bf"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f8981b5156627dc6f801c1",
+        "createdAt": "2025-04-11T05:14:26.082Z",
+        "updatedAt": "2025-04-11T05:14:26.082Z",
+        "id": "67f8981b5156627dc6f801c1"
+      }
+    ],
+    "createdAt": "2025-04-11T04:18:35.571Z",
+    "updatedAt": "2025-04-11T05:14:26.082Z",
+    "id": "4pxXBtfPW"
+  },
+  {
+    "_id": "GICHOb36j",
+    "name": "ims-03",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67f8a709c730eb6acfccdbc1",
+          "67f8a709c730eb6acfccdbc2",
+          "67f8a709c730eb6acfccdbc3"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67f8a709c730eb6acfccdbc0",
+        "createdAt": "2025-04-11T15:26:23.281Z",
+        "updatedAt": "2025-04-11T15:26:23.281Z",
+        "id": "67f8a709c730eb6acfccdbc0"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// GitHub Page link:\n// https://prishajain-23.github.io/ims-2025-prisha/ims-03-prisha/index.html\n\n// ----- URL Parameter Parsing -----\n// Default values for spacing and step\nlet spacing = 5;\nlet step = 2;\n\n// Use URLSearchParams to grab parameters from the current URL\nconst urlParams = new URLSearchParams(window.location.search);\nif (urlParams.has(\"spacing\")) {\n  const s = Number(urlParams.get(\"spacing\"));\n  if (!isNaN(s) && s > 0) {\n    spacing = s;\n  }\n}\nif (urlParams.has(\"step\")) {\n  const st = Number(urlParams.get(\"step\"));\n  if (!isNaN(st) && st > 0) {\n    step = st;\n  }\n}\n\n// ----- Global Variables for Generative Code -----\nlet x;\nlet y;\nlet grid;\nlet cols, rows;\nlet my = {};\n\n// ----- Global Variables for Pose Influence -----\nlet video;\nlet bodyPose;\nlet poses = [];\nlet prevNose; // We'll store the previous nose position here\n\n// New global variable to track the last detected number of poses\nlet lastPoseCount = 0;\n\n// ----- Preload: Load the bodyPose model -----\nfunction preload() {\n  // Load the bodyPose model from ml5.js\n  bodyPose = ml5.bodyPose();\n}\n\n// ----- Setup Function -----\nfunction setup() {\n  my.width = windowWidth;\n  my.height = windowHeight;\n  my.changeTime = 5.0;\n  my.debug = 1;\n  my.startTime = millis() / 1000.0;\n\n  createCanvas(my.width, my.height);\n  noStroke();\n\n  // Set up video capture for pose estimation\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n\n  // Start detecting poses from the video stream\n  bodyPose.detectStart(video, gotPoses);\n\n  // Calculate grid values for the generative random walk\n  cols = floor(width / spacing);\n  rows = floor(height / spacing);\n  x = cols / 2;\n  y = rows / 2;\n\n  background(0);\n  grid = make2DArray(cols, rows);\n\n  // Use HSB for coloring\n  colorMode(HSB, 360, 100, 100, 100);\n\n  setup_fullScreenButton();\n}\n\n// ----- Draw Function -----\n// This draw loop uses the movement of the user's nose to influence the generative artwork.\nfunction draw() {\n  check_time();\n\n  // --- Extract the Nose Keypoint ---\n  let currentNose = createVector(0, 0);\n  let kpArray; // This will hold the keypoints array.\n  if (poses.length > 0) {\n    // Try the flat structure first.\n    if (poses[0].keypoints) {\n      kpArray = poses[0].keypoints;\n    }\n    // Or if nested under a 'pose' property:\n    else if (poses[0].pose && poses[0].pose.keypoints) {\n      kpArray = poses[0].pose.keypoints;\n    }\n\n    if (kpArray) {\n      // Find the nose keypoint using its name\n      let noseKeypoint = kpArray.find(\n        (k) => k.name && k.name.toLowerCase() === \"nose\"\n      );\n\n      if (noseKeypoint) {\n        // Accept any detection regardless of confidence for now.\n        currentNose = createVector(noseKeypoint.x, noseKeypoint.y);\n      }\n    }\n\n    // --- Compute Movement Delta (if desired) ---\n    let noseDelta = createVector(0, 0);\n    if (prevNose) {\n      noseDelta = p5.Vector.sub(currentNose, prevNose);\n    }\n    prevNose = currentNose.copy();\n\n    // --- Generative Drawing ---\n    noFill();\n    let hueValue = map(x * spacing, 0, width, 0, 360);\n    let brightnessValue = map(y * spacing, 0, height, 50, 100);\n    stroke(hueValue, 100, brightnessValue, 80);\n\n    const shape = floor(random(3));\n    switch (shape) {\n      case 0:\n        rect(x * spacing, y * spacing, spacing);\n        break;\n      case 1:\n        strokeWeight(spacing);\n        point(x * spacing, y * spacing);\n        break;\n      case 2:\n        strokeWeight(1);\n        triangle(\n          x * spacing,\n          y * spacing,\n          (x + spacing * 0.5) * spacing,\n          y * spacing,\n          (x + spacing * 0.25) * spacing,\n          (y + spacing * 0.25) * spacing\n        );\n        break;\n    }\n\n    // --- Map Nose Position to Grid Coordinates ---\n    let mappedNoseX = map(currentNose.x, 0, video.width, cols, 0);\n    let mappedNoseY = map(currentNose.y, 0, video.height, 0, rows);\n    let noseForce = createVector(mappedNoseX - x, mappedNoseY - y);\n\n    // --- Compute a Random Delta ---\n    let randomDelta = createVector(0, 0);\n    let pattern = floor(random(4));\n    switch (pattern) {\n      case 0:\n        randomDelta.x = step;\n        break;\n      case 1:\n        randomDelta.x = -step;\n        break;\n      case 2:\n        randomDelta.y = step;\n        break;\n      case 3:\n        randomDelta.y = -step;\n        break;\n    }\n\n    // --- Update the Walk Position ---\n    let influenceFactor = 0.5; // Adjust to change the strength of the nose attraction.\n    x += randomDelta.x + noseForce.x * influenceFactor;\n    y += randomDelta.y + noseForce.y * influenceFactor;\n  }\n}\n\n// ----- Utility: Create a 2D Array -----\nfunction make2DArray(cols, rows) {\n  let arr = new Array(cols);\n  for (let i = 0; i < arr.length; i++) {\n    arr[i] = new Array(rows);\n  }\n  return arr;\n}\n\n// ----- Check Time (Placeholder Function) -----\nfunction check_time() {\n  let now = millis() / 1000;\n  if (now - my.startTime > my.changeTime) {\n    my.startTime = now;\n  }\n}\n\n// ----- Full Screen Button Setup -----\nfunction setup_fullScreenButton() {\n  my.fullScreenButton = createButton(\"?=v7 Full Screen\");\n  my.fullScreenButton.mousePressed(fullScreen_action);\n  my.fullScreenButton.style(\"font-size:42px\");\n  my.fullScreenButton.position(0, 0);\n}\n\nfunction fullScreen_action() {\n  my.fullScreenButton.remove();\n  fullscreen(1);\n  setTimeout(() => {\n    ui_present_window();\n  }, 100);\n}\n\nfunction ui_present_window() {\n  resizeCanvas(windowWidth, windowHeight);\n}\n\n// ----- Handle Window Resizing -----\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n  background(0);\n  cols = floor(width / spacing);\n  rows = floor(height / spacing);\n  x = cols / 2;\n  y = rows / 2;\n  grid = make2DArray(cols, rows);\n}\n\n// ----- Refresh the Sketch State -----\n// This function resets the canvas and walker state.\nfunction refreshSketch() {\n  // Clear the canvas\n  background(0);\n  // Reset grid and walker position\n  cols = floor(width / spacing);\n  rows = floor(height / spacing);\n  x = cols / 2;\n  y = rows / 2;\n  grid = make2DArray(cols, rows);\n  // Reset the timer if needed\n  my.startTime = millis() / 1000.0;\n  console.log(\"New person detected - sketch refreshed!\");\n}\n\n// ----- Pose Detection Callback -----\nfunction gotPoses(results) {\n  // Check if a new person is detected by comparing the number of detected poses.\n  let currentPoseCount = results.length;\n  if (currentPoseCount > lastPoseCount) {\n    // A new person has been added\n    refreshSketch();\n  }\n  lastPoseCount = currentPoseCount;\n  \n  // Update the global poses array\n  poses = results;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67f8a709c730eb6acfccdbc2",
+        "createdAt": "2025-04-11T15:26:23.281Z",
+        "updatedAt": "2025-04-11T15:26:23.281Z",
+        "id": "67f8a709c730eb6acfccdbc2"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.min.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f8a709c730eb6acfccdbc1",
+        "createdAt": "2025-04-11T15:26:23.281Z",
+        "updatedAt": "2025-04-11T15:26:23.281Z",
+        "id": "67f8a709c730eb6acfccdbc1"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f8a709c730eb6acfccdbc3",
+        "createdAt": "2025-04-11T15:26:23.281Z",
+        "updatedAt": "2025-04-11T15:26:23.281Z",
+        "id": "67f8a709c730eb6acfccdbc3"
+      }
+    ],
+    "createdAt": "2025-04-11T05:22:17.909Z",
+    "updatedAt": "2025-04-11T15:26:23.281Z",
+    "id": "GICHOb36j"
+  },
+  {
     "_id": "gzm72DHGD",
     "name": "Indian Drum Kit - Interactive Rhythm Composition",
     "files": [
@@ -8302,6 +8473,144 @@
     "id": "9XXBR0S7Y"
   },
   {
+    "_id": "AMG5QwZVl",
+    "name": "Markov chain - drum kit",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6807c59edf24712b2fba8df2",
+          "6807c59edf24712b2fba8df3",
+          "6807c59edf24712b2fba8df4",
+          "6807c59edf24712b2fba8df5"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "6807c59edf24712b2fba8df1",
+        "createdAt": "2025-04-22T16:36:53.482Z",
+        "updatedAt": "2025-04-22T16:36:53.482Z",
+        "id": "6807c59edf24712b2fba8df1"
+      },
+      {
+        "name": "sketch.js",
+        "content": "let synth = new Tone.Synth();\nsynth.toDestination();\n\n/*\npseudocode\n\nlet chain = new Markove({\n  \"C\": [G 70%, C 30%],\n  \"G\": [G 30%, C 70%]\n})\n*/\n\nlet chain = new Markov({\n  \"C2\": [\n    { value: \"G2\", probability: 0.3 },\n    { value: \"C2\", probability: 0.7 },\n  ],\n  \"G2\": [\n    { value: \"C2\", probability: 0.3 },\n    { value: \"G2\", probability: 0.7 },\n  ],\n});\nchain.value = \"C2\";\n\nfunction setup() {}\n\nfunction draw() {}\n\nlet loop = new Tone.Loop(function(time){\nlet nextPitch = chain.next();\nsynth.triggerAttack(nextPitch, \"16n\", time);\n}, \"8n\").start(0);\nTone.Transport.start()\n\n// INTERACTIVE VERSION:\n// function keyPressed() {\n//   synth.triggerAttack(random(100, 900));\n// }\n\n// function keyReleased() {\n//   synth.triggerRelease();\n// }\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "6807c59edf24712b2fba8df4",
+        "createdAt": "2025-04-22T16:36:53.482Z",
+        "updatedAt": "2025-04-22T16:36:53.482Z",
+        "id": "6807c59edf24712b2fba8df4"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html>\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js\" type=\"text/javascript\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6807c59edf24712b2fba8df2",
+        "createdAt": "2025-04-22T16:36:53.482Z",
+        "updatedAt": "2025-04-22T16:36:53.482Z",
+        "id": "6807c59edf24712b2fba8df2"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6807c59edf24712b2fba8df5",
+        "createdAt": "2025-04-22T16:36:53.482Z",
+        "updatedAt": "2025-04-22T16:36:53.482Z",
+        "id": "6807c59edf24712b2fba8df5"
+      },
+      {
+        "name": "markov.js",
+        "content": "/*\n This class (based on the deprecated CtrlMarkov) represents a Markov Chain where each call to Markov.next will move to the next state. If the next state choice is an array, the next state is chosen randomly with even probability for all of the choices. For a weighted probability of the next choices, pass in an object with \"state\" and \"probability\" attributes. The probabilities will be normalized and then chosen. If no next options are given for the current state, the state will stay there. \n \nExample 1\n let chain = new Tone.CtrlMarkov({\n   \"beginning\" : [\"end\", \"middle\"],\n   \"middle\" : \"end\"\n });\n chain.value = \"beginning\";\n chain.next(); //returns \"end\" or \"middle\" with 50% probability\n \nExample 2\nlet chain = new Tone.CtrlMarkov({\n  \"beginning\" : [{\"value\" : \"end\", \"probability\" : 0.8}, \n                {\"value\" : \"middle\", \"probability\" : 0.2}],\n  \"middle\" : \"end\"\n});\nchain.next(); //returns \"end\" with 80% probability or \"middle\" with 20%.\n\n*/\nclass Markov{\n  constructor(values){\n    // An object with the state names as the keys and the next state(s) as the values.\n    this.values = values;\n    \n    // The current state\n    this.value;\n  }\n  \n  // Returns the next state of the Markov values. \n  next(){\n    let next = this.values[this.value];\n    if (Tone.isArray(next)){\n        let distribution = this.getProbDistribution(next);\n        let rand = Math.random();\n        let total = 0;\n        for (var i = 0; i < distribution.length; i++){\n            var dist = distribution[i];\n            if (rand > total && rand < total + dist){\n                let chosen = next[i];\n                if (Tone.isObject(chosen)){\n                    this.value = chosen.value;\n                } else {\n                    this.value = chosen;\n                }\n            }\n            total += dist;\n        }\n    } else {\n        this.value = next;\n    }\t\n\treturn this.value;\n  }\n\n  \n  // Choose randomly from an array weighted options in the form \n  // {\"state\" : string, \"probability\" : number} or an array of values\n  // Returns the randomly selected choice\n  getProbDistribution(options){\n    let distribution = [];\n    let total = 0;\n    let needsNormalizing = false;\n    for (let i = 0; i < options.length; i++){\n        let option = options[i];\n        if (Tone.isObject(option)){\n            needsNormalizing = true;\n            distribution[i] = option.probability;\n        } else {\n            distribution[i] = 1 / options.length;\n        }\n        total += distribution[i];\n    }\n    if (needsNormalizing){\n        //normalize the values\n        for (let j = 0; j < distribution.length; j++){\n            distribution[j] = distribution[j] / total;\n        }\n    }\n    return distribution;\n  }\n}\n\n\n ",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6807c59edf24712b2fba8df3",
+        "createdAt": "2025-04-22T16:36:53.482Z",
+        "updatedAt": "2025-04-22T16:36:53.482Z",
+        "id": "6807c59edf24712b2fba8df3"
+      }
+    ],
+    "createdAt": "2025-04-22T16:36:46.612Z",
+    "updatedAt": "2025-04-22T16:36:53.482Z",
+    "id": "AMG5QwZVl"
+  },
+  {
+    "_id": "9jBFc35Ga",
+    "name": "Markov chain starter",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6807c58cdf24712b2fba8ded",
+          "6807c58cdf24712b2fba8dee",
+          "6807c58cdf24712b2fba8def",
+          "6807c58cdf24712b2fba8df0"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "6807c58cdf24712b2fba8dec",
+        "createdAt": "2025-04-22T16:39:28.293Z",
+        "updatedAt": "2025-04-22T16:39:28.293Z",
+        "id": "6807c58cdf24712b2fba8dec"
+      },
+      {
+        "name": "sketch.js",
+        "content": "let synth = new Tone.Synth();\nsynth.toDestination();\n\n/*\npseudocode\n\nlet chain = new Markove({\n  \"C\": [G 70%, C 30%],\n  \"G\": [G 30%, C 70%]\n})\n*/\n\nlet chain = new Markov({\n  \"C2\": [\n    { value: \"G2\", probability: 0.3 },\n    { value: \"C2\", probability: 0.7 },\n  ],\n  \"G2\": [\n    { value: \"C2\", probability: 0.3 },\n    { value: \"G2\", probability: 0.7 },\n  ],\n});\nchain.value = \"C2\";\n\nfunction setup() {}\n\nfunction draw() {}\n\nlet loop = new Tone.Loop(function(time){\nlet nextPitch = chain.next();\nsynth.triggerAttack(nextPitch, \"16n\", time);\n}, \"8n\").start(0);\nTone.Transport.start()\n\n// INTERACTIVE VERSION:\n// function keyPressed() {\n//   let nextPitch = chain.next();\n//   synth.triggerAttack(nextPitch);\n// }\n\n// function keyReleased() {\n//   synth.triggerRelease();\n// }\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "6807c58cdf24712b2fba8def",
+        "createdAt": "2025-04-22T16:39:28.293Z",
+        "updatedAt": "2025-04-22T16:39:28.293Z",
+        "id": "6807c58cdf24712b2fba8def"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html>\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js\" type=\"text/javascript\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6807c58cdf24712b2fba8ded",
+        "createdAt": "2025-04-22T16:39:28.293Z",
+        "updatedAt": "2025-04-22T16:39:28.293Z",
+        "id": "6807c58cdf24712b2fba8ded"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6807c58cdf24712b2fba8df0",
+        "createdAt": "2025-04-22T16:39:28.293Z",
+        "updatedAt": "2025-04-22T16:39:28.293Z",
+        "id": "6807c58cdf24712b2fba8df0"
+      },
+      {
+        "name": "markov.js",
+        "content": "/*\n This class (based on the deprecated CtrlMarkov) represents a Markov Chain where each call to Markov.next will move to the next state. If the next state choice is an array, the next state is chosen randomly with even probability for all of the choices. For a weighted probability of the next choices, pass in an object with \"state\" and \"probability\" attributes. The probabilities will be normalized and then chosen. If no next options are given for the current state, the state will stay there. \n \nExample 1\n let chain = new Tone.CtrlMarkov({\n   \"beginning\" : [\"end\", \"middle\"],\n   \"middle\" : \"end\"\n });\n chain.value = \"beginning\";\n chain.next(); //returns \"end\" or \"middle\" with 50% probability\n \nExample 2\nlet chain = new Tone.CtrlMarkov({\n  \"beginning\" : [{\"value\" : \"end\", \"probability\" : 0.8}, \n                {\"value\" : \"middle\", \"probability\" : 0.2}],\n  \"middle\" : \"end\"\n});\nchain.next(); //returns \"end\" with 80% probability or \"middle\" with 20%.\n\n*/\nclass Markov{\n  constructor(values){\n    // An object with the state names as the keys and the next state(s) as the values.\n    this.values = values;\n    \n    // The current state\n    this.value;\n  }\n  \n  // Returns the next state of the Markov values. \n  next(){\n    let next = this.values[this.value];\n    if (Tone.isArray(next)){\n        let distribution = this.getProbDistribution(next);\n        let rand = Math.random();\n        let total = 0;\n        for (var i = 0; i < distribution.length; i++){\n            var dist = distribution[i];\n            if (rand > total && rand < total + dist){\n                let chosen = next[i];\n                if (Tone.isObject(chosen)){\n                    this.value = chosen.value;\n                } else {\n                    this.value = chosen;\n                }\n            }\n            total += dist;\n        }\n    } else {\n        this.value = next;\n    }\t\n\treturn this.value;\n  }\n\n  \n  // Choose randomly from an array weighted options in the form \n  // {\"state\" : string, \"probability\" : number} or an array of values\n  // Returns the randomly selected choice\n  getProbDistribution(options){\n    let distribution = [];\n    let total = 0;\n    let needsNormalizing = false;\n    for (let i = 0; i < options.length; i++){\n        let option = options[i];\n        if (Tone.isObject(option)){\n            needsNormalizing = true;\n            distribution[i] = option.probability;\n        } else {\n            distribution[i] = 1 / options.length;\n        }\n        total += distribution[i];\n    }\n    if (needsNormalizing){\n        //normalize the values\n        for (let j = 0; j < distribution.length; j++){\n            distribution[j] = distribution[j] / total;\n        }\n    }\n    return distribution;\n  }\n}\n\n\n ",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "6807c58cdf24712b2fba8dee",
+        "createdAt": "2025-04-22T16:39:28.293Z",
+        "updatedAt": "2025-04-22T16:39:28.293Z",
+        "id": "6807c58cdf24712b2fba8dee"
+      }
+    ],
+    "createdAt": "2025-04-22T16:36:28.319Z",
+    "updatedAt": "2025-04-22T16:39:28.293Z",
+    "id": "9jBFc35Ga"
+  },
+  {
     "_id": "8hM76JI4J",
     "name": "melody sequencer starter copy",
     "files": [
@@ -9508,6 +9817,63 @@
     "id": "eQRbKGuLq"
   },
   {
+    "_id": "WBtwiUpFv",
+    "name": "random melody loop within scale - n octaves copy copy",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67f55483e271c9142852eae7",
+          "67f55483e271c9142852eae8",
+          "67f55483e271c9142852eae9"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67f55483e271c9142852eae6",
+        "createdAt": "2025-04-08T16:56:30.643Z",
+        "updatedAt": "2025-04-08T16:56:30.643Z",
+        "id": "67f55483e271c9142852eae6"
+      },
+      {
+        "name": "sketch.js",
+        "content": "const synth = new Tone.PolySynth().toDestination();\n\n// Just intonation: C\nlet referencePitch = 16.35;  // middle C: 261.6; \nlet octave = 4; // middle C: 4 \nlet factors = [1 / 1, 9 / 8, 5 / 4, 4 / 3, 3 / 2, 5 / 3, 15 / 8];\n\n// 22 Srutti system subset: Shadja Grama Sa 1/1\n// let factors = [9/8, 5/4, 4/3, 3/2, 5/3, 15/8, 2/1];\n// let referencePitch = 195.99771799087463;\n\nlet dl = new Tone.Loop(droneLoop, \"2n\");\nfunction droneLoop(time) {\n  let dronePitch = getPitch\n}\n\nlet ml = new Tone.Loop(melodyLoop, \"8n\");\nfunction melodyLoop(time){\n\n  let pos = floor(random(0, 24));\n  let pitch = getPitch(pos);\n  console.log(pitch);  \n  synth.triggerAttackRelease(pitch, \"8n\", time);  \n}\n\nfunction getPitch(pos){\n  let scaleDegree = pos % factors.length;  \n  let adjustedOctave = octave + floor(pos / factors.length);  \n  let pitch = getPitchAtModePos(scaleDegree, adjustedOctave);\n  console.log(\" pos:\", pos,\n               \" deg:\", scaleDegree, \n                \" oct:\", adjustedOctave, \n              \" w: \", Math.pow(2, octave),\n              \" pitch:\", pitch\n  );\n  return pitch;\n}\n\nfunction getPitchAtModePos(pos, octave){  \n  return referencePitch * factors[pos] * Math.pow(2, octave);\n}\n\nfunction mousePressed(){\n  Tone.Transport.start();\n  ml.start();\n  dl.start();\n}\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n}\n\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67f55483e271c9142852eae8",
+        "createdAt": "2025-04-08T16:56:30.643Z",
+        "updatedAt": "2025-04-08T16:56:30.643Z",
+        "id": "67f55483e271c9142852eae8"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.9/Tone.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f55483e271c9142852eae7",
+        "createdAt": "2025-04-08T16:56:30.643Z",
+        "updatedAt": "2025-04-08T16:56:30.643Z",
+        "id": "67f55483e271c9142852eae7"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f55483e271c9142852eae9",
+        "createdAt": "2025-04-08T16:56:30.643Z",
+        "updatedAt": "2025-04-08T16:56:30.643Z",
+        "id": "67f55483e271c9142852eae9"
+      }
+    ],
+    "createdAt": "2025-04-08T16:53:23.649Z",
+    "updatedAt": "2025-04-08T16:56:30.643Z",
+    "id": "WBtwiUpFv"
+  },
+  {
     "_id": "qVtPx0W_z",
     "name": "record + loop",
     "files": [
@@ -10029,6 +10395,63 @@
     "createdAt": "2025-03-18T16:36:18.188Z",
     "updatedAt": "2025-03-18T16:36:18.188Z",
     "id": "OLsHO76Ci"
+  },
+  {
+    "_id": "5RLhSlVcZ",
+    "name": "scale keyboard - frequencies - n octaves copy",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67f5547dd85f193b4660a49a",
+          "67f5547dd85f193b4660a49b",
+          "67f5547dd85f193b4660a49c"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67f5547dd85f193b4660a499",
+        "createdAt": "2025-04-10T21:21:02.601Z",
+        "updatedAt": "2025-04-10T21:21:02.601Z",
+        "id": "67f5547dd85f193b4660a499"
+      },
+      {
+        "name": "sketch.js",
+        "content": "const synth = new Tone.PolySynth().toDestination();\n\n// Just intonation: C\nlet referencePitch = 16.35; // middle C: 261.6;\nlet octave = 4; // middle C: 4\nlet factors = [1 / 1, 9 / 8, 5 / 4, 4 / 3, 3 / 2, 5 / 3, 15 / 8];\n\n// 22 Srutti system subset: Shadja Grama Sa 1/1\n// let factors = [9/8, 5/4, 4/3, 3/2, 5/3, 15/8, 2/1];\n// let referencePitch = 195.99771799087463;\n\nfunction keyPressed() {\n  let pos = int(key) - 1;\n  let pitch = getPitch(pos);\n  synth.triggerAttackRelease(pitch, \"8n\");\n}\n\nfunction getPitch(pos) {\n  let scaleDegree = pos % factors.length;\n  let adjustedOctave = octave + floor(pos / factors.length);\n  let pitch = getPitchAtModePos(scaleDegree, adjustedOctave);\n  console.log(\n    \" pos:\",\n    pos,\n    \" deg:\",\n    scaleDegree,\n    \" oct:\",\n    adjustedOctave,\n    \" w: \",\n    Math.pow(2, octave),\n    \" pitch:\",\n    pitch\n  );\n  return pitch;\n}\n\nfunction getPitchAtModePos(pos, octave) {\n  return referencePitch * factors[pos] * Math.pow(2, octave);\n}\n\nfunction setup() {\n  createCanvas(400, 400);\n}\n\nfunction draw() {\n  background(220);\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67f5547dd85f193b4660a49b",
+        "createdAt": "2025-04-10T21:21:02.601Z",
+        "updatedAt": "2025-04-10T21:21:02.601Z",
+        "id": "67f5547dd85f193b4660a49b"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.9/Tone.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f5547dd85f193b4660a49a",
+        "createdAt": "2025-04-10T21:21:02.601Z",
+        "updatedAt": "2025-04-10T21:21:02.601Z",
+        "id": "67f5547dd85f193b4660a49a"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f5547dd85f193b4660a49c",
+        "createdAt": "2025-04-10T21:21:02.601Z",
+        "updatedAt": "2025-04-10T21:21:02.601Z",
+        "id": "67f5547dd85f193b4660a49c"
+      }
+    ],
+    "createdAt": "2025-04-08T16:53:17.421Z",
+    "updatedAt": "2025-04-10T21:21:02.601Z",
+    "id": "5RLhSlVcZ"
   },
   {
     "_id": "tDxLexxwO",
@@ -11308,8 +11731,8 @@
         "fileType": "folder",
         "isSelectedFile": false,
         "_id": "67d9b0784a70663e3ad2c94e",
-        "createdAt": "2025-03-31T20:30:04.460Z",
-        "updatedAt": "2025-03-31T20:30:04.460Z",
+        "createdAt": "2025-04-11T20:53:16.040Z",
+        "updatedAt": "2025-04-11T20:53:16.040Z",
         "id": "67d9b0784a70663e3ad2c94e"
       },
       {
@@ -11319,8 +11742,8 @@
         "fileType": "file",
         "isSelectedFile": true,
         "_id": "67d9b0784a70663e3ad2c950",
-        "createdAt": "2025-03-31T20:30:04.460Z",
-        "updatedAt": "2025-03-31T20:30:04.460Z",
+        "createdAt": "2025-04-11T20:53:16.040Z",
+        "updatedAt": "2025-04-11T20:53:16.040Z",
         "id": "67d9b0784a70663e3ad2c950"
       },
       {
@@ -11330,8 +11753,8 @@
         "fileType": "file",
         "isSelectedFile": false,
         "_id": "67d9b0784a70663e3ad2c94f",
-        "createdAt": "2025-03-31T20:30:04.460Z",
-        "updatedAt": "2025-03-31T20:30:04.460Z",
+        "createdAt": "2025-04-11T20:53:16.040Z",
+        "updatedAt": "2025-04-11T20:53:16.040Z",
         "id": "67d9b0784a70663e3ad2c94f"
       },
       {
@@ -11341,13 +11764,13 @@
         "fileType": "file",
         "isSelectedFile": false,
         "_id": "67d9b0784a70663e3ad2c951",
-        "createdAt": "2025-03-31T20:30:04.460Z",
-        "updatedAt": "2025-03-31T20:30:04.460Z",
+        "createdAt": "2025-04-11T20:53:16.040Z",
+        "updatedAt": "2025-04-11T20:53:16.040Z",
         "id": "67d9b0784a70663e3ad2c951"
       }
     ],
     "createdAt": "2025-03-18T17:42:16.871Z",
-    "updatedAt": "2025-03-31T20:30:04.460Z",
+    "updatedAt": "2025-04-11T20:53:16.040Z",
     "id": "Dx-K95gU4"
   },
   {
@@ -11417,24 +11840,25 @@
         "children": [
           "67d9a5c1eaa1ca923d7db03a",
           "67d9a5c1eaa1ca923d7db03b",
-          "67d9a5c1eaa1ca923d7db03c"
+          "67d9a5c1eaa1ca923d7db03c",
+          "6807c542354012e984d9a9d4"
         ],
         "fileType": "folder",
         "isSelectedFile": false,
         "_id": "67d9a5c1eaa1ca923d7db039",
-        "createdAt": "2025-03-18T17:13:22.421Z",
-        "updatedAt": "2025-03-18T17:13:22.421Z",
+        "createdAt": "2025-04-22T16:29:21.353Z",
+        "updatedAt": "2025-04-22T16:35:14.235Z",
         "id": "67d9a5c1eaa1ca923d7db039"
       },
       {
         "name": "sketch.js",
-        "content": "// Tone.Oscillator allows you to deal with multiple oscillators at the same time\nlet osc = new Tone.Oscillator(261.63, \"sine\");\nosc.volume.value = -12;\nosc.toMaster();\n\nsetInterval(randomPartials, 1000);\n\nfunction randomPartials() {\n  let partials = [];\n  for (let i = 0; i < 8; i++) {\n    partials[i] = random();\n  }\n  console.log(partials);\n  osc.partials = partials;\n}\n\nlet slider;\n\nfunction setup() {\n  slider = createSlider(-60, 0, -12);\n  slider.input(updateVolume);\n}\n\nfunction updateVolume() {\n  osc.volume.rampTo(this.value());\n}\n\nfunction draw() {\n  background(220);\n}\n\nfunction keyPressed() {\n  osc.start();\n}\n\nfunction keyReleased() {\n  osc.stop();\n}\n",
+        "content": "let synth = new Tone.Synth();\nsynth.toDestination();\n\n/*\npseudocode\n\nlet chain = new Markove({\n  \"C\": [G 70%, C 30%],\n  \"G\": [G 30%, C 70%]\n})\n*/\n\nlet chain = new Markov({\n  C2: [\n    { value: \"G2\", probability: 0.3 },\n    { value: \"C2\", probability: 0.7 },\n  ],\n  C2: [\n    { value: \"G2\", probability: 0.3 },\n    { value: \"C2\", probability: 0.7 },\n  ],\n});\n\nfunction setup() {}\n\nfunction draw() {}\n\nfunction keyPressed() {\n  synth.triggerAttack(random(100, 900));\n}\n\nfunction keyReleased() {\n  synth.triggerRelease();\n}\n",
         "children": [],
         "fileType": "file",
         "isSelectedFile": true,
         "_id": "67d9a5c1eaa1ca923d7db03b",
-        "createdAt": "2025-03-18T17:13:22.421Z",
-        "updatedAt": "2025-03-18T17:13:22.421Z",
+        "createdAt": "2025-04-22T16:29:21.353Z",
+        "updatedAt": "2025-04-22T16:29:21.353Z",
         "id": "67d9a5c1eaa1ca923d7db03b"
       },
       {
@@ -11444,8 +11868,8 @@
         "fileType": "file",
         "isSelectedFile": false,
         "_id": "67d9a5c1eaa1ca923d7db03a",
-        "createdAt": "2025-03-18T17:13:22.421Z",
-        "updatedAt": "2025-03-18T17:13:22.421Z",
+        "createdAt": "2025-04-22T16:29:21.353Z",
+        "updatedAt": "2025-04-22T16:29:21.353Z",
         "id": "67d9a5c1eaa1ca923d7db03a"
       },
       {
@@ -11455,13 +11879,23 @@
         "fileType": "file",
         "isSelectedFile": false,
         "_id": "67d9a5c1eaa1ca923d7db03c",
-        "createdAt": "2025-03-18T17:13:22.421Z",
-        "updatedAt": "2025-03-18T17:13:22.421Z",
+        "createdAt": "2025-04-22T16:29:21.353Z",
+        "updatedAt": "2025-04-22T16:29:21.353Z",
         "id": "67d9a5c1eaa1ca923d7db03c"
+      },
+      {
+        "name": "markov.js",
+        "content": "",
+        "children": [],
+        "fileType": "file",
+        "_id": "6807c542354012e984d9a9d4",
+        "createdAt": "2025-04-22T16:35:14.223Z",
+        "updatedAt": "2025-04-22T16:35:14.223Z",
+        "id": "6807c542354012e984d9a9d4"
       }
     ],
     "createdAt": "2025-03-18T16:56:33.682Z",
-    "updatedAt": "2025-03-18T17:13:22.421Z",
+    "updatedAt": "2025-04-22T16:35:14.235Z",
     "id": "LvLSde4yn"
   },
   {
@@ -11855,6 +12289,63 @@
     "createdAt": "2025-03-18T16:36:18.701Z",
     "updatedAt": "2025-03-18T16:36:54.055Z",
     "id": "H-T_F4jMg"
+  },
+  {
+    "_id": "ReytsMyfE",
+    "name": "tree with ml5",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "67f91d3adf4a5c0adc53d3ab",
+          "67f91d3adf4a5c0adc53d3aa",
+          "67f91d3adf4a5c0adc53d3ac"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "67f91d3adf4a5c0adc53d3ad",
+        "createdAt": "2025-04-23T23:27:32.081Z",
+        "updatedAt": "2025-04-23T23:27:32.081Z",
+        "id": "67f91d3adf4a5c0adc53d3ad"
+      },
+      {
+        "name": "sketch.js",
+        "content": "let video;\nlet bodyPose;\nlet poses = [];\n\nlet smoothedNose;\nlet wind = 0;\n\nfunction preload() {\n  bodyPose = ml5.bodyPose();\n}\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight);\n  angleMode(DEGREES);\n  stroke(255);\n\n  video = createCapture(VIDEO);\n  video.size(640, 480);\n  video.hide();\n\n  bodyPose.detectStart(video, gotPoses);\n\n  smoothedNose = createVector(width / 2, height / 2);\n}\n\nfunction draw() {\n  background(0);\n\n  // Get current nose position\n  let currentNose = createVector(smoothedNose.x, smoothedNose.y); // fallback to last smoothed\n  if (poses.length > 0) {\n    let kpArray = poses[0].keypoints || poses[0].pose?.keypoints;\n    if (kpArray) {\n      let noseKeypoint = kpArray.find(\n        (k) => k.name && k.name.toLowerCase() === \"nose\"\n      );\n      if (noseKeypoint) {\n        currentNose.set(noseKeypoint.x, noseKeypoint.y);\n      }\n    }\n  }\n\n  // Smooth the nose position\n  smoothedNose.lerp(currentNose, 0.05);\n\n  // Map nose x-position to wind force\n  wind = map(smoothedNose.x, 0, video.width, -PI / 8, PI / 8);\n\n  // Draw the tree with wind applied\n  push();\n  translate(width / 2, height);\n  branch(120);\n  pop();\n}\n\nfunction branch(len) {\n  stroke(255, map(len, 2, 120, 50, 255));\n  line(0, 0, 0, -len);\n  translate(0, -len);\n\n  if (len > 8) {\n    push();\n    rotate(20 + degrees(wind));\n    branch(len * 0.67);\n    pop();\n\n    push();\n    rotate(-20 + degrees(wind));\n    branch(len * 0.67);\n    pop();\n  }\n}\n\nfunction gotPoses(results) {\n  poses = results;\n}",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "67f91d3adf4a5c0adc53d3aa",
+        "createdAt": "2025-04-23T23:27:32.081Z",
+        "updatedAt": "2025-04-23T23:27:32.081Z",
+        "id": "67f91d3adf4a5c0adc53d3aa"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.min.js\"></script>\n    <script src=\"https://unpkg.com/ml5@1/dist/ml5.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n    <meta charset=\"utf-8\" />\n  </head>\n  <body>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f91d3adf4a5c0adc53d3ab",
+        "createdAt": "2025-04-23T23:27:32.081Z",
+        "updatedAt": "2025-04-23T23:27:32.081Z",
+        "id": "67f91d3adf4a5c0adc53d3ab"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "67f91d3adf4a5c0adc53d3ac",
+        "createdAt": "2025-04-23T23:27:32.081Z",
+        "updatedAt": "2025-04-23T23:27:32.081Z",
+        "id": "67f91d3adf4a5c0adc53d3ac"
+      }
+    ],
+    "updatedAt": "2025-04-23T23:27:32.081Z",
+    "createdAt": "2025-04-11T13:50:45.911Z",
+    "id": "ReytsMyfE"
   },
   {
     "_id": "iQQbP2oU6",
@@ -12251,5 +12742,62 @@
     "createdAt": "2024-10-29T20:51:09.739Z",
     "updatedAt": "2024-10-29T20:57:30.252Z",
     "id": "UHMQ6z-U3"
+  },
+  {
+    "_id": "wpk9J2sf2",
+    "name": "win or lose -prish notes",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "68129df6a11df23bc0b477fd",
+          "68129df6a11df23bc0b477fe",
+          "68129df6a11df23bc0b477ff"
+        ],
+        "fileType": "folder",
+        "isSelectedFile": false,
+        "_id": "68129df6a11df23bc0b477fc",
+        "createdAt": "2025-04-30T22:02:36.697Z",
+        "updatedAt": "2025-04-30T22:02:36.697Z",
+        "id": "68129df6a11df23bc0b477fc"
+      },
+      {
+        "name": "sketch.js",
+        "content": "\nlet x,y;\nlet r,g,b;\nlet circleX,circleY;\n//rad=radius of circle; we do width-rad because it represents the edge of the circle instead of the center; center is circleX\nlet rad=10;\n\n// var speed = 3; had to delete this bc \"x*+=1 is already doing the work for it\"\n\n//goal rectangle parameters\nlet rectLeft,rectRight,rectTop,rectBottom;\n\n//paddle parameters\nlet paddleX, paddleY, paddleW, paddleH;\n//this is for no trail for the paddle\n// let paddleOverlay;\n\n// ball-trail layer\nlet trail;          // <-- new\n\nlet state=\"play\";\nlet gameOver=false;\n//confetti\n// let cr, cg, cb;\n\n\n// 1. call setup function to run once\nfunction setup() {\n  // 2. create the canvas, make it the same size as the window wxh\n  // note for cathy from prisha: check out windowResized() function in the p5 reference or look it up and you'll find some example code. this makes it dynamically resize when you change the canvas instead of having to stop and play each time\n  createCanvas(windowWidth, windowHeight);\n    //ball setup \n  //figure out what these (3,7) means--> picks random floating number\n\n  //ball trail\n  \n  // 3. create a graphics layer same size as the canvas\n  // we use graphics layer for easier rendering rather than painting straight on the canvas, which makes things slow\n  trail = createGraphics(windowWidth, windowHeight);\n  // 4. remove the stroke from the graphics layer\n  // prisha: not sure if this is needed here, we would use this for new pixels, not the layer where we're going to put them\n  trail.noStroke()\n  \n  // 5. define x and y to be between 3 and 6\n  x = random(3,6);\n  y = random(3,6);\n  \n  // 6. define a W radius and a H radius for the circle\n  // ^ setup runs once so this creeates a \n  circleX=random(rad,width-rad);\n  circleY=random(rad,height/2);\n  r = random(255);\n  g = random(255);\n  b = random(255);\n  \n\n  //goal rectangle setup \nrectLeft = width/2 - 100;\nrectRight = width/2 + 100;\nrectTop = -20;\nrectBottom = 20;\n  \n  //paddle setip \npaddleW = 100;\npaddleH = 20;\npaddleX = mouseX;\npaddleY = height - 20;\ntrail = createGraphics(windowWidth, windowHeight);\n}\n\n//makes it restart in middle --> doesnt work anymore bc x and y are random \n// function mousePressed(){\n//   x=width/2;\n//   y=height/2;\n// }\n    \n\nfunction drawLose() {\n  background(0, 0, 0, 200);        // dim last frame\n\n  // translucent red veil\n  fill(255, 0, 0, 255);\n  rectMode(CORNER);\n  noStroke();\n  rect(0, 0, width, height);\n\n  // text\n  fill(255);\n  textAlign(CENTER, CENTER);\n  textSize(90);\n  text(\"YOU LOSE!\", width / 2, height / 2);\n  textSize(40);\n    textAlign(CENTER, CENTER);\n  text(\"(Click to play again)\",width/2,height/1.75);\n}\n\nfunction drawWin() {\n  background(0, 0, 0, 20);        // dim last frame\n\n  // confetti burst\n  for (let i = 0; i < 30; i++) {\n    fill(random(255), random(255), random(255));\n    noStroke();\n    ellipse(random(width), random(height), 10, 10);\n  }\n\n  // text\n  fill(255);\n  textAlign(CENTER, CENTER);\n  textSize(90);\n  text(\"YOU WIN!\", width / 2, height / 2);\n  textSize(40);\n    textAlign(CENTER, CENTER);\n  text(\"(Click to play again)\",width/2,height/1.75);\n}\n\nfunction draw() {\n   if (state === \"play\") {\n    playLoop();                 // ← your existing gameplay routine\n    return;\n  }\n\n  if (state === \"win\")  { drawWin();  return; }\n  if (state === \"lose\") { drawLose(); return; }\n  //GAME OVER\n if (state===\"win\") {\n   //confetti\nfor (let i = 0; i < 30; i++) {\n      let starX = random(width);\n      let starY = random(height);\n      let cr = random(255);\n      let cg = random(255);\n      let cb = random(255);\n      noStroke();\n      fill(cr, cg, cb);\n      ellipse(starX, starY, 8, 8);\n}\n// 📝 Game Over Text\n\n  fill(255);\n  textAlign(CENTER, CENTER);\n  textSize(100);\n  text(\"GAME OVER\", width / 2, height / 2);\n      \n  return;\n}\n}\n\nfunction playLoop () {\n//CIRCLE SHIT\n  //the last number (alpha) creates trail\n    background(0,0,0,25);    //(0,0,0,x) x is how evident the trail is--> bigger=smaller trail \n   //ball movement\n    circleX+=x;\n    circleY+=y;\n  \n    //DRAW CIRCLE\n    noStroke();\n    fill(r,g,b);\n    circle(circleX,circleY,rad*2);\n  \n  trail.fill(0, 0, 0, 25);           // translucent wash → trail effect\n  trail.rect(0, 0, width, height);   // cover the whole off-screen layer\n\n  trail.fill(r, g, b);               // fresh ball\n  trail.noStroke();\n  trail.circle(circleX, circleY, rad * 2);\n\n  image(trail, 0, 0);                // blit the layer to the main canvas\n\n\n  //THIS WHOLE CODE MAKES IT BOUNCE FROM EDGE TO EDGE \n  //width-rad is the right edge; rad is the left edge; x*=-1 flips horizontal speed direction\n    //end of game\n    if(circleX>width-rad || circleX<rad){\n      x*=-1;\n      r = random(255);\n      g = random(255);\n      b = random(255);\n    }\n//width-rad is the bottom; rad is the top; x*=-1 flips vertical speed direction\n    if(circleY<rad){\n      y*=-1;\n      r = random(255);\n      g = random(255);\n      b = random(255);\n    }\n\n  \n//PADDLE SHIT \n//paddle code setup \n  paddleX = mouseX;\n  paddleY = height - 20;\n\n\n  // Paddle collision\n  let hittingPaddle =\n    circleY + rad >= paddleY - paddleH / 2 &&\n    circleY + rad <= paddleY + paddleH / 2 &&\n    circleX >= paddleX - paddleW / 2 &&\n    circleX <= paddleX + paddleW / 2;\n\n  if (hittingPaddle && y > 0) {\n    y *= -1;\n    x += random(-1, 1);\n    y += random(-0.5, 0.5);\n    r = random(255);\n    g = random(255);\n    b = random(255);\n  } else if (circleY + rad > height) {\n  // Missed the paddle\n  state = \"lose\";\n  }\n  \n  //MAKES PADDLE HAVE NO TRAIL \n// paddleOverlay.clear();\nfill(255);\n// paddleOverlay.noStroke();\n// paddleOverlay.rectMode(CENTER);\nrect(paddleX, paddleY, paddleW, paddleH);\n  // image(, 0, 0);\n\n   //GOAL RECTANGLE\n//draws goal rectangle\n  fill(255);\n  rectMode(CENTER);\n  rect(width/2,10,200,40);\n\n  //game over winning code\n  \nif (circleX + rad > rectLeft && \n    circleX - rad < rectRight &&\n    circleY + rad > rectTop &&\n    circleY - rad < rectBottom) {\nstate = \"win\";        // ← instead of gameOver = true;\n}\n  \n}\nfunction mousePressed() {\n  // ignore clicks while the ball is in play\n  if (state === \"play\") return;\n\n  //------------------------------------------\n  // 1. wipe the visual layers\n  //------------------------------------------\n  trail.clear();        // remove the faded ball streaks\n  background(0);        // clear whatever overlay was on-screen\n\n  //------------------------------------------\n  // 2. re-initialise the ball and colours\n  //------------------------------------------\n  circleX = random(rad, width - rad);\n  circleY = random(rad, height / 2);\n  x = random(3, 6);\n  y = random(3, 6);\n  r = random(255);\n  g = random(255);\n  b = random(255);\n\n  //------------------------------------------\n  // 3. back to live play\n  //------------------------------------------\n  state = \"play\";\n}\n// // how to restart game\n// function mousePressed() {\n//     // Reset ball\n//     circleX = width / 2;\n//     circleY = height / 2;\n//     x = random(3, 7);\n//     y = random(3, 7);\n//     r = random(255);\n//     g = random(255);\n//     b = random(255);\n\n//     // Reset overlays and game state\n//     //makes confetti build up \n//     background(0);",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": true,
+        "_id": "68129df6a11df23bc0b477fe",
+        "createdAt": "2025-04-30T22:02:36.697Z",
+        "updatedAt": "2025-04-30T22:02:36.697Z",
+        "id": "68129df6a11df23bc0b477fe"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdn.jsdelivr.net/npm/p5@1.11.5/lib/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68129df6a11df23bc0b477fd",
+        "createdAt": "2025-04-30T22:02:36.697Z",
+        "updatedAt": "2025-04-30T22:02:36.697Z",
+        "id": "68129df6a11df23bc0b477fd"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "isSelectedFile": false,
+        "_id": "68129df6a11df23bc0b477ff",
+        "createdAt": "2025-04-30T22:02:36.697Z",
+        "updatedAt": "2025-04-30T22:02:36.697Z",
+        "id": "68129df6a11df23bc0b477ff"
+      }
+    ],
+    "createdAt": "2025-04-30T22:02:30.900Z",
+    "updatedAt": "2025-04-30T22:02:36.697Z",
+    "id": "wpk9J2sf2"
   }
 ]

@@ -1,38 +1,34 @@
-// Tone.Oscillator allows you to deal with multiple oscillators at the same time
-let osc = new Tone.Oscillator(261.63, "sine");
-osc.volume.value = -12;
-osc.toMaster();
+let synth = new Tone.Synth();
+synth.toDestination();
 
-setInterval(randomPartials, 1000);
+/*
+pseudocode
 
-function randomPartials() {
-  let partials = [];
-  for (let i = 0; i < 8; i++) {
-    partials[i] = random();
-  }
-  console.log(partials);
-  osc.partials = partials;
-}
+let chain = new Markove({
+  "C": [G 70%, C 30%],
+  "G": [G 30%, C 70%]
+})
+*/
 
-let slider;
+let chain = new Markov({
+  C2: [
+    { value: "G2", probability: 0.3 },
+    { value: "C2", probability: 0.7 },
+  ],
+  C2: [
+    { value: "G2", probability: 0.3 },
+    { value: "C2", probability: 0.7 },
+  ],
+});
 
-function setup() {
-  slider = createSlider(-60, 0, -12);
-  slider.input(updateVolume);
-}
+function setup() {}
 
-function updateVolume() {
-  osc.volume.rampTo(this.value());
-}
-
-function draw() {
-  background(220);
-}
+function draw() {}
 
 function keyPressed() {
-  osc.start();
+  synth.triggerAttack(random(100, 900));
 }
 
 function keyReleased() {
-  osc.stop();
+  synth.triggerRelease();
 }
